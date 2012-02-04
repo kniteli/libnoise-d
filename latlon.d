@@ -1,4 +1,4 @@
-// mathconsts.h
+// latlon.cpp
 //
 // Copyright (C) 2003, 2004 Jason Bevins
 //
@@ -19,36 +19,28 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
+module noise.latlon;
 
-#ifndef NOISE_MATHCONSTS_H
-#define NOISE_MATHCONSTS_H
-
-// For whatever reason, I can't find the basic math consts in the MSVC version
-// of math.h.
-
-namespace noise
-{
-
-  /// @addtogroup libnoise
-  /// @{
-
-  /// Pi.
-  const double PI = 3.1415926535897932385;
-
-  /// Square root of 2.
-  const double SQRT_2 = 1.4142135623730950488;
-
-  /// Square root of 3.
-  const double SQRT_3 = 1.7320508075688772935;
-
-  /// Converts an angle from degrees to radians.
-  const double DEG_TO_RAD = PI / 180.0;
-
-  /// Converts an angle from radians to degrees.
-  const double RAD_TO_DEG = 1.0 / DEG_TO_RAD;
-
-  /// @}
-
+private {
+	import std.math;
+	import noise.mathconsts;
 }
 
-#endif
+/// Converts latitude/longitude coordinates on a unit sphere into 3D
+/// Cartesian coordinates.
+///
+/// @param lat The latitude, in degrees.
+/// @param lon The longitude, in degrees.
+/// @param x On exit, this parameter contains the @a x coordinate.
+/// @param y On exit, this parameter contains the @a y coordinate.
+/// @param z On exit, this parameter contains the @a z coordinate.
+///
+/// @pre lat must range from @b -90 to @b +90.
+/// @pre lon must range from @b -180 to @b +180.
+void LatLonToXYZ (double lat, double lon, double& x, double& y, double& z)
+{
+  double r = cos (DEG_TO_RAD * lat);
+  x = r * cos (DEG_TO_RAD * lon);
+  y =     sin (DEG_TO_RAD * lat);
+  z = r * sin (DEG_TO_RAD * lon);
+}
