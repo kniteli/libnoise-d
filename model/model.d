@@ -20,12 +20,11 @@
 // off every 'zig'.)
 //
 
-#ifndef NOISE_MODEL_H
-#define NOISE_MODEL_H
+module noise.model.model;
 
-#include "cylinder.h"
-#include "line.h"
-#include "plane.h"
-#include "sphere.h"
-
-#endif
+public {
+	import noise.model.cylinder;
+	import noise.model.line;
+	import noise.model.plane;
+	import noise.model.sphere;
+}
