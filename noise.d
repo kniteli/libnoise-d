@@ -20,9 +20,6 @@
 // off every 'zig'.)
 //
 
-#ifndef NOISE_H
-#define NOISE_H
-
 /// @mainpage libnoise
 ///
 /// @section intro Introduction
@@ -66,9 +63,8 @@
 /// Contact jas for questions about libnoise.  The spam-resistant email
 /// address is jlbezigvins@gmzigail.com (For great email, take off every
 /// <a href=http://www.planettribes.com/allyourbase/story.shtml>zig</a>.)
-
-#include "module/module.h"
-#include "model/model.h"
-#include "misc.h"
-
-#endif
+public {
+	import noise.module.module;
+	import noise.model.model;
+	import noise.misc;
+}

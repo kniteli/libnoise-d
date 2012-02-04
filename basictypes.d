@@ -20,41 +20,29 @@
 // off every 'zig'.)
 //
 
-#ifndef NOISE_BASICTYPES_H
-#define NOISE_BASICTYPES_H
-
 // You may need to modify these constants for your compiler or platform.
 
-namespace noise
-{
+/// @defgroup libnoise libnoise
+/// @addtogroup libnoise
+/// @{
 
-  /// @defgroup libnoise libnoise
-  /// @addtogroup libnoise
-  /// @{
+/// 32-bit unsigned integer type.
+alias uint uint32;
 
-  /// Unsigned integer type.
-  typedef unsigned int uint;
+/// 16-bit unsigned integer type.
+alias ushort uint16;
 
-  /// 32-bit unsigned integer type.
-  typedef unsigned int uint32;
+/// 8-bit unsigned integer type.
+alias ubyte uint8;
 
-  /// 16-bit unsigned integer type.
-  typedef unsigned short uint16;
+/// 32-bit signed integer type.
+alias int int32;
 
-  /// 8-bit unsigned integer type.
-  typedef unsigned char uint8;
+/// 16-bit signed integer type.
+alias short int16;
 
-  /// 32-bit signed integer type.
-  typedef int int32;
+/// 8-bit signed integer type.
+alias byte int8;
 
-  /// 16-bit signed integer type.
-  typedef short int16;
+/// @}
 
-  /// 8-bit signed integer type.
-  typedef char int8;
-
-  /// @}
-
-}
-
-#endif
