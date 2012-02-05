@@ -70,7 +70,7 @@ class Sphere
     /// @returns A reference to the noise module.
     ///
     /// @pre A noise module was passed to the SetModule() method.
-    const module::Module& GetModule () const
+    const Module& GetModule () const
     {
       assert (m_pModule != NULL);
       return *m_pModule;
