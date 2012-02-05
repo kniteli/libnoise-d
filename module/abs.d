@@ -1,4 +1,4 @@
-// abs.cpp
+// abs.h
 //
 // Copyright (C) 2003, 2004 Jason Bevins
 //
@@ -19,19 +19,56 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
+module noise.module.abs;
 
-#include "abs.h"
-
-using namespace noise::module;
-
-Abs::Abs ():
-  Module (GetSourceModuleCount ())
-{
+private {
+    import noise.module.modulebase;
 }
 
-double Abs::GetValue (double x, double y, double z) const
-{
-  assert (m_pSourceModule[0] != NULL);
+/// @addtogroup libnoise
+/// @{
 
-  return fabs (m_pSourceModule[0]->GetValue (x, y, z));
-}
+/// @addtogroup modules
+/// @{
+
+/// @defgroup modifiermodules Modifier Modules
+/// @addtogroup modifiermodules
+/// @{
+
+/// Noise module that outputs the absolute value of the output value from
+/// a source module.
+///
+/// @image html moduleabs.png
+///
+/// This noise module requires one source module.
+
+class Abs: Module
+{
+
+  public:
+
+    /// Constructor.
+    this ()
+    {
+        super(this.GetSourceModuleCount());
+    }
+
+    int GetSourceModuleCount () const
+    {
+      return 1;
+    }
+
+    double GetValue (double x, double y, double z) const
+    {
+      assert (m_pSourceModule[0] != NULL);
+
+      return fabs (m_pSourceModule[0].GetValue (x, y, z));
+    }
+
+};
+
+/// @}
+
+/// @}
+
+/// @}
