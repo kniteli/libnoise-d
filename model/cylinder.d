@@ -25,13 +25,14 @@ import std.math;
 import noise.module.modulebase;
 
 class Cylinder {
-	public Cylinder (): m_pModule (NULL)
+	public this ()
 	{
+		m_pModule = NULL;
 	}
 
-	public Cylinder (const Module& module):
-	  m_pModule (&module)
+	public this (const Module& module)
 	{
+		m_pModule = &module;
 	}
 
 	/// Returns the noise module that is used to generate the output
@@ -71,7 +72,7 @@ class Cylinder {
 	  x = cos (angle * DEG_TO_RAD);
 	  y = height;
 	  z = sin (angle * DEG_TO_RAD);
-	  return m_pModule->GetValue (x, y, z);
+	  return m_pModule.GetValue (x, y, z);
 	}
 
 	/// Sets the noise module that is used to generate the output values.
