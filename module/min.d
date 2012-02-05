@@ -19,58 +19,56 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
+module noise.module.min;
 
-#ifndef NOISE_MODULE_MIN_H
-#define NOISE_MODULE_MIN_H
+import noise.module.modulebase;
+import noise.misc;
 
-#include "modulebase.h"
+/// @addtogroup libnoise
+/// @{
 
-namespace noise
+/// @addtogroup modules
+/// @{
+
+/// @addtogroup combinermodules
+/// @{
+
+/// Noise module that outputs the smaller of the two output values from
+/// two source modules.
+///
+/// @image html modulemin.png
+///
+/// This noise module requires two source modules.
+class Min : Module
 {
 
-  namespace module
-  {
+  public:
 
-    /// @addtogroup libnoise
-    /// @{
-
-    /// @addtogroup modules
-    /// @{
-
-    /// @addtogroup combinermodules
-    /// @{
-
-    /// Noise module that outputs the smaller of the two output values from
-    /// two source modules.
-    ///
-    /// @image html modulemin.png
-    ///
-    /// This noise module requires two source modules.
-    class Min: public Module
+    /// Constructor.
+    this()
     {
+        super(this.GetSourceModuleCount());
+    }
 
-      public:
+    override int GetSourceModuleCount () const
+    {
+      return 2;
+    }
 
-        /// Constructor.
-        Min ();
+    override double GetValue (double x, double y, double z) const
+    {
+      assert (m_pSourceModule[0] != NULL);
+      assert (m_pSourceModule[1] != NULL);
 
-        virtual int GetSourceModuleCount () const
-        {
-          return 2;
-        }
+      double v0 = m_pSourceModule[0].GetValue (x, y, z);
+      double v1 = m_pSourceModule[1].GetValue (x, y, z);
+      return GetMin (v0, v1);
+    }
 
-        virtual double GetValue (double x, double y, double z) const;
+};
 
-    };
+/// @}
 
-    /// @}
+/// @}
 
-    /// @}
-
-    /// @}
-
-  }
-
-}
-
-#endif
+/// @}

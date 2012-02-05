@@ -1,4 +1,4 @@
-// max.cpp
+// invert.h
 //
 // Copyright (C) 2003, 2004 Jason Bevins
 //
@@ -19,23 +19,51 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
+module noise.module.invert;
 
-#include "../misc.h"
-#include "max.h"
+import noise.module.modulebase;
 
-using namespace noise::module;
+/// @addtogroup libnoise
+/// @{
 
-Max::Max ():
-  Module (GetSourceModuleCount ())
+/// @addtogroup modules
+/// @{
+
+/// @addtogroup modifiermodules
+/// @{
+
+/// Noise module that inverts the output value from a source module.
+///
+/// @image html moduleinvert.png
+///
+/// This noise module requires one source module.
+class Invert : Module
 {
-}
 
-double Max::GetValue (double x, double y, double z) const
-{
-  assert (m_pSourceModule[0] != NULL);
-  assert (m_pSourceModule[1] != NULL);
+  public:
 
-  double v0 = m_pSourceModule[0]->GetValue (x, y, z);
-  double v1 = m_pSourceModule[1]->GetValue (x, y, z);
-  return GetMax (v0, v1);
-}
+    /// Constructor.
+    this()
+    {
+        super(this.GetSourceModuleCount());
+    }
+
+    override int GetSourceModuleCount () const
+    {
+      return 1;
+    }
+
+    override double GetValue (double x, double y, double z) const
+    {
+      assert (m_pSourceModule[0] != NULL);
+
+      return -(m_pSourceModule[0].GetValue (x, y, z));
+    }
+
+};
+
+/// @}
+
+/// @}
+
+/// @}
