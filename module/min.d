@@ -21,8 +21,10 @@
 //
 module noise.mod.min;
 
-import noise.mod.modulebase;
-import noise.misc;
+private {
+  import noise.mod.modulebase;
+  import noise.misc;
+}
 
 /// @addtogroup libnoise
 /// @{

@@ -21,8 +21,9 @@
 //
 module noise.mod.add;
 
-import noise.mod.modulebase;
-
+private {
+  import noise.mod.modulebase;
+}
 /// @addtogroup libnoise
 /// @{
 

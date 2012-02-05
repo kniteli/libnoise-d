@@ -19,6 +19,7 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
+module noise.basictypes;
 
 // You may need to modify these constants for your compiler or platform.
 

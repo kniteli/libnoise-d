@@ -19,6 +19,7 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
+module noise.exception;
 
 /// @addtogroup libnoise
 /// @{
@@ -26,7 +27,7 @@
 /// Invalid parameter exception
 ///
 /// An invalid parameter was passed to a libnoise function or method.
-class ExceptionInvalidParam : Throwable
+class ExceptionInvalidParam : Exception
 {
 };
 
@@ -38,21 +39,21 @@ class ExceptionInvalidParam : Throwable
 /// specific noise module, and its GetValue() method was called, that
 /// method will raise a debug assertion instead of this exception.  This
 /// is done for performance reasons.
-class ExceptionNoMod : Throwable
+class ExceptionNoMod : Exception
 {
 };
 
 /// Out of memory exception
 ///
 /// There was not enough memory to perform an action.
-class ExceptionOutOfMemory : Throwable
+class ExceptionOutOfMemory : Exception
 {
 };
 
 /// Unknown exception
 ///
 /// libnoise raised an unknown exception.
-class ExceptionUnknown : Throwable
+class ExceptionUnknown : Exception
 {
 };
 

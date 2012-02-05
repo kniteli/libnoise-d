@@ -19,7 +19,7 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noice.misc;
+module noise.misc;
 
 /// Clamps a value onto a clamping range.
 ///

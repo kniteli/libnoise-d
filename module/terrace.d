@@ -21,9 +21,11 @@
 //
 module noise.mod.terrace;
 
-import noise.mod.modulebase;
-import noise.misc;
-import noise.interp;
+private {
+	import noise.mod.modulebase;
+	import noise.misc;
+	import noise.interp;
+}
 
 /// @addtogroup libnoise
 /// @{

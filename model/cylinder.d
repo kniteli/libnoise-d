@@ -19,10 +19,13 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
+module noise.model.cylinder;
 
-import noise.mathconsts;
-import std.math;
-import noise.mod.modulebase;
+private {
+	import noise.mathconsts;
+	import std.math;
+	import noise.mod.modulebase;
+}
 
 class Cylinder {
 	public this ()

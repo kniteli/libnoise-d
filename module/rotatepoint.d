@@ -21,8 +21,10 @@
 //
 module noise.mod.rotatepoint;
 
-import noise.mod.modulebase;
-import noise.mathconsts;
+private {
+  import noise.mod.modulebase;
+  import noise.mathconsts;
+}
 
 /// @addtogroup libnoise
 /// @{

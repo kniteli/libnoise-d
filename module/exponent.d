@@ -21,7 +21,9 @@
 //
 module noise.mod.exponent;
 
-import noise.mod.modulebase;
+private {
+    import noise.mod.modulebase;
+}
 
 /// @addtogroup libnoise
 /// @{

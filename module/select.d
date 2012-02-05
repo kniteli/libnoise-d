@@ -21,8 +21,10 @@
 //
 module noise.mod.select;
 
-import noise.mod.modulebase;
-import noise.interp;
+private {
+  import noise.mod.modulebase;
+  import noise.interp;
+}
 
 /// @addtogroup libnoise
 /// @{

@@ -17,7 +17,7 @@ module noise.vectortable;
 // Chapter 5 - Implementing Improved Perlin Noise by Ken Perlin,
 // specifically page 76.
 double g_randomVectors[256 * 4] =
-{
+[
 -0.763874, -0.596439, -0.246489, 0.0,
 0.396055, 0.904518, -0.158073, 0.0,
 -0.499004, -0.8665, -0.0131631, 0.0,
@@ -274,4 +274,4 @@ double g_randomVectors[256 * 4] =
 -0.859262, 0.143405, -0.491024, 0.0,
 0.991353, 0.112814, 0.0670273, 0.0,
 0.0337884, -0.979891, -0.196654, 0.0
-};
+];

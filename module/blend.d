@@ -21,8 +21,10 @@
 //
 module noise.mod.blend;
 
-import noise.interp;
-import noise.mod.modulebase;
+private {
+    import noise.mod.modulebase;
+    import noise.interp;
+}
 
 /// @addtogroup libnoise
 /// @{

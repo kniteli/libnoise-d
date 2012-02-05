@@ -21,9 +21,10 @@
 //
 module noise.mod.cylinders;
 
-import noise.mod.modulebase;
-import noise.misc;
-
+private {
+  import noise.mod.modulebase;
+  import noise.misc;
+}
 /// @addtogroup libnoise
 /// @{
 

@@ -19,9 +19,11 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.mod.constantsants;
+module noise.mod.constants;
 
-import noise.mod.modulebase;
+private {
+    import noise.mod.modulebase;
+}
 
 /// @addtogroup libnoise
 /// @{

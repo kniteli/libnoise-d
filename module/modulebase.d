@@ -21,7 +21,7 @@
 //
 module noise.mod.modulebase;
 
-public {
+package {
     import std.math;
     import noise.basictypes;
     import noise.exception;

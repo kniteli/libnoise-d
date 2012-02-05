@@ -19,9 +19,12 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-import noise.mod.modulebase;
-import noise.latlon;
+module noise.model.sphere;
 
+private {
+    import noise.mod.modulebase;
+    import noise.latlon;
+}
 /// @addtogroup libnoise
 /// @{
 

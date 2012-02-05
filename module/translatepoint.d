@@ -21,7 +21,9 @@
 //
 module noise.mod.translatepoint;
 
-import noise.mod.modulebase;
+private {
+    import noise.mod.modulebase;
+}
 
 /// @addtogroup libnoise
 /// @{

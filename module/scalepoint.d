@@ -21,7 +21,9 @@
 //
 module noise.mod.scalepoint;
 
-import noise.mod.modulebase;
+private {
+    import noise.mod.modulebase;
+}
 
 /// @addtogroup libnoise
 /// @{
