@@ -1,4 +1,4 @@
-// multiply.cpp
+// multiply.h
 //
 // Copyright (C) 2003, 2004 Jason Bevins
 //
@@ -19,21 +19,54 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
+module noise.module.multiply;
 
-#include "multiply.h"
+import noise.module.modulebase;
 
-using namespace noise::module;
+/// @addtogroup libnoise
+/// @{
 
-Multiply::Multiply ():
-  Module (GetSourceModuleCount ())
+/// @addtogroup modules
+/// @{
+
+/// @addtogroup combinermodules
+/// @{
+
+/// Noise module that outputs the product of the two output values from
+/// two source modules.
+///
+/// @image html modulemultiply.png
+///
+/// This noise module requires two source modules.
+class Multiply : Module
 {
-}
 
-double Multiply::GetValue (double x, double y, double z) const
-{
-  assert (m_pSourceModule[0] != NULL);
-  assert (m_pSourceModule[1] != NULL);
+  public:
 
-  return m_pSourceModule[0]->GetValue (x, y, z)
-       * m_pSourceModule[1]->GetValue (x, y, z);
-}
+    /// Constructor.
+    this()
+    {
+        super(this.GetSourceModuleCount());
+    }
+
+    override int GetSourceModuleCount () const
+    {
+      return 2;
+    }
+
+    override double GetValue (double x, double y, double z) const
+    {
+      assert (m_pSourceModule[0] != NULL);
+      assert (m_pSourceModule[1] != NULL);
+
+      return m_pSourceModule[0].GetValue (x, y, z)
+           * m_pSourceModule[1].GetValue (x, y, z);
+    }
+
+};
+
+/// @}
+
+/// @}
+
+/// @}
