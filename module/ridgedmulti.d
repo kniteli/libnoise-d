@@ -46,7 +46,7 @@ const int DEFAULT_RIDGED_OCTAVE_COUNT = 6;
 
 /// Default noise quality for the module::RidgedMulti noise
 /// module.
-const NoiseQuality DEFAULT_RIDGED_QUALITY = QUALITY_STD;
+const NoiseQuality DEFAULT_RIDGED_QUALITY = NoiseQuality.QUALITY_STD;
 
 /// Default noise seed for the module::RidgedMulti noise module.
 const int DEFAULT_RIDGED_SEED = 0;

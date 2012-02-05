@@ -220,17 +220,17 @@ class Mod
     /// Constructor.
     this(int sourceModCount)
     {
-      m_pSourceMod = NULL;
+      m_pSourceMod = null;
 
       // Create an array of pointers to all source modules required by this
-      // noise module.  Set these pointers to NULL.
+      // noise module.  Set these pointers to null.
       if (sourceModCount > 0) {
         m_pSourceMod = new const (Mod*)[sourceModCount];
         for (int i = 0; i < sourceModCount; i++) {
-          m_pSourceMod[i] = NULL;
+          m_pSourceMod[i] = null;
         }
       } else {
-        m_pSourceMod = NULL;
+        m_pSourceMod = null;
       }
     }
 
@@ -259,17 +259,17 @@ class Mod
     /// method.
     const ref Mod GetSourceMod(int index) const
     {
-      assert (m_pSourceMod != NULL);
+      assert (m_pSourceMod != null);
 
       // The following fix was provided by Will Hawkins:
       //
-      //   m_pSourceMod[index] != NULL
+      //   m_pSourceMod[index] != null
       //
       // was incorrect; it should be:
       //
-      //   m_pSourceMod[index] == NULL
+      //   m_pSourceMod[index] == null
       if (index >= GetSourceModCount () || index < 0
-        || m_pSourceMod[index] == NULL) {
+        || m_pSourceMod[index] == null) {
         throw ExceptionNoMod ();
       }
       return *(m_pSourceMod[index]);
@@ -335,7 +335,7 @@ class Mod
     /// its output values.
     void SetSourceMod(int index, const ref Mod sourceMod)
     {
-      assert (m_pSourceMod != NULL);
+      assert (m_pSourceMod != null);
       if (index >= GetSourceModCount () || index < 0) {
         throw ExceptionInvalidParam ();
       }

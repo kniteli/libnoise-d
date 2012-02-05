@@ -92,7 +92,7 @@ class RotatePoint : Mod
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceMod[0] != NULL);
+      assert (m_pSourceMod[0] != null);
 
       double nx = (m_x1Matrix * x) + (m_y1Matrix * y) + (m_z1Matrix * z);
       double ny = (m_x2Matrix * x) + (m_y2Matrix * y) + (m_z2Matrix * z);

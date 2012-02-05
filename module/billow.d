@@ -48,7 +48,7 @@ const int DEFAULT_BILLOW_OCTAVE_COUNT = 6;
 const double DEFAULT_BILLOW_PERSISTENCE = 0.5;
 
 /// Default noise quality for the the noise::module::Billow noise module.
-const NoiseQuality DEFAULT_BILLOW_QUALITY = QUALITY_STD;
+const NoiseQuality DEFAULT_BILLOW_QUALITY = NoiseQuality.QUALITY_STD;
 
 /// Default noise seed for the the noise::module::Billow noise module.
 const int DEFAULT_BILLOW_SEED = 0;

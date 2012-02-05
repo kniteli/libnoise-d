@@ -55,7 +55,7 @@ class Sphere
     /// Constructor.
     this ()
     {
-        m_pMod = NULL;
+        m_pMod = null;
     }
 
     /// Constructor
@@ -75,7 +75,7 @@ class Sphere
     /// @pre A noise module was passed to the SetMod() method.
     const ref Mod GetMod () const
     {
-      assert (m_pMod != NULL);
+      assert (m_pMod != null);
       return *m_pMod;
     }
 
@@ -100,7 +100,7 @@ class Sphere
     /// western hemisphere.
     double GetValue (double lat, double lon) const
     {
-      assert (m_pMod != NULL);
+      assert (m_pMod != null);
 
       double x, y, z;
       LatLonToXYZ (lat, lon, x, y, z);

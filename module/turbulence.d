@@ -189,7 +189,7 @@ class Turbulence : Mod
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceMod[0] != NULL);
+      assert (m_pSourceMod[0] != null);
 
       // Get the values from the three module::Perlin noise modules and
       // add each value to each coordinate of the input value.  There are also

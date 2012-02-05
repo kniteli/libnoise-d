@@ -62,8 +62,8 @@ class Power : Mod
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceMod[0] != NULL);
-      assert (m_pSourceMod[1] != NULL);
+      assert (m_pSourceMod[0] != null);
+      assert (m_pSourceMod[1] != null);
 
       return pow (m_pSourceMod[0].GetValue (x, y, z),
         m_pSourceMod[1].GetValue (x, y, z));

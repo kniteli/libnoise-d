@@ -78,10 +78,10 @@ class Displace : Mod
 
   override double GetValue (double x, double y, double z) const
   {
-    assert (m_pSourceMod[0] != NULL);
-    assert (m_pSourceMod[1] != NULL);
-    assert (m_pSourceMod[2] != NULL);
-    assert (m_pSourceMod[3] != NULL);
+    assert (m_pSourceMod[0] != null);
+    assert (m_pSourceMod[1] != null);
+    assert (m_pSourceMod[2] != null);
+    assert (m_pSourceMod[3] != null);
 
     // Get the output values from the three displacement modules.  Add each
     // value to the corresponding coordinate in the input value.
@@ -110,7 +110,7 @@ class Displace : Mod
   /// module.
   const ref Mod GetXDisplaceMod () const
   {
-    if (m_pSourceMod == NULL || m_pSourceMod[1] == NULL) {
+    if (m_pSourceMod == null || m_pSourceMod[1] == null) {
       throw ExceptionNoMod ();
     }
     return *(m_pSourceMod[1]);
@@ -132,7 +132,7 @@ class Displace : Mod
   /// module.
   const ref Mod GetYDisplaceMod () const
   {
-    if (m_pSourceMod == NULL || m_pSourceMod[2] == NULL) {
+    if (m_pSourceMod == null || m_pSourceMod[2] == null) {
       throw ExceptionNoMod ();
     }
     return *(m_pSourceMod[2]);
@@ -154,7 +154,7 @@ class Displace : Mod
   /// module.
   const ref Mod GetZDisplaceMod () const
   {
-    if (m_pSourceMod == NULL || m_pSourceMod[3] == NULL) {
+    if (m_pSourceMod == null || m_pSourceMod[3] == null) {
       throw ExceptionNoMod ();
     }
     return *(m_pSourceMod[3]);
@@ -207,7 +207,7 @@ class Displace : Mod
   /// noise module unless another displacement module replaces it.
   void SetXDisplaceMod (const ref Mod xDisplaceMod)
   {
-    assert (m_pSourceMod != NULL);
+    assert (m_pSourceMod != null);
     m_pSourceMod[1] = &xDisplaceMod;
   }
 
@@ -230,7 +230,7 @@ class Displace : Mod
   /// noise module unless another displacement module replaces it.
   void SetYDisplaceMod (const ref Mod yDisplaceMod)
   {
-    assert (m_pSourceMod != NULL);
+    assert (m_pSourceMod != null);
     m_pSourceMod[2] = &yDisplaceMod;
   }
 
@@ -253,7 +253,7 @@ class Displace : Mod
   /// noise module unless another displacement module replaces it.
   void SetZDisplaceMod (const ref Mod zDisplaceMod)
   {
-    assert (m_pSourceMod != NULL);
+    assert (m_pSourceMod != null);
     m_pSourceMod[3] = &zDisplaceMod;
   }
 

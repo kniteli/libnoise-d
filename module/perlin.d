@@ -47,7 +47,7 @@ const int DEFAULT_PERLIN_OCTAVE_COUNT = 6;
 const double DEFAULT_PERLIN_PERSISTENCE = 0.5;
 
 /// Default noise quality for the module::Perlin noise module.
-const NoiseQuality DEFAULT_PERLIN_QUALITY = QUALITY_STD;
+const NoiseQuality DEFAULT_PERLIN_QUALITY = NoiseQuality.QUALITY_STD;
 
 /// Default noise seed for the module::Perlin noise module.
 const int DEFAULT_PERLIN_SEED = 0;

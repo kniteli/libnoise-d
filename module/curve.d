@@ -83,7 +83,7 @@ class Curve : Mod
     this ()
     {
         super(this.GetSourceModCount ());
-        m_pControlPoints = NULL;
+        m_pControlPoints = null;
         m_controlPointCount = 0;
     }
 
@@ -115,7 +115,7 @@ class Curve : Mod
     /// @post All points on the curve are deleted.
     void ClearAllControlPoints ()
     {
-      m_pControlPoints = NULL;
+      m_pControlPoints = null;
       m_controlPointCount = 0;
     }
 
@@ -149,7 +149,7 @@ class Curve : Mod
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceMod[0] != NULL);
+      assert (m_pSourceMod[0] != null);
       assert (m_controlPointCount >= 4);
 
       // Get the output value from the source module.

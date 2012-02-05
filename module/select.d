@@ -117,7 +117,7 @@ class Select : Mod
     /// with an index value of 0.
     const ref Mod GetControlMod () const
     {
-      if (m_pSourceMod == NULL || m_pSourceMod[2] == NULL) {
+      if (m_pSourceMod == null || m_pSourceMod[2] == null) {
         throw ExceptionNoMod ();
       }
       return *(m_pSourceMod[2]);
@@ -171,9 +171,9 @@ class Select : Mod
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceMod[0] != NULL);
-      assert (m_pSourceMod[1] != NULL);
-      assert (m_pSourceMod[2] != NULL);
+      assert (m_pSourceMod[0] != null);
+      assert (m_pSourceMod[1] != null);
+      assert (m_pSourceMod[2] != null);
 
       double controlValue = m_pSourceMod[2].GetValue (x, y, z);
       double alpha;
@@ -273,7 +273,7 @@ class Select : Mod
     /// module.
     void SetControlMod (const ref Mod controlMod)
     {
-      assert (m_pSourceMod != NULL);
+      assert (m_pSourceMod != null);
       m_pSourceMod[2] = &controlMod;
     }
 

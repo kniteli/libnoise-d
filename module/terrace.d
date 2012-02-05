@@ -77,7 +77,7 @@ class Terrace : Mod
 		super(this.GetSourceModCount ());
 	  	m_controlPointCount = 0;
 	  	m_invertTerraces = false;
-	  	m_pControlPoints = NULL;
+	  	m_pControlPoints = null;
 	}
 
 	/// Destructor.
@@ -111,7 +111,7 @@ class Terrace : Mod
 	/// @post All control points on the terrace-forming curve are deleted.
 	void ClearAllControlPoints ()
 	{
-	  m_pControlPoints = NULL;
+	  m_pControlPoints = null;
 	  m_controlPointCount = 0;
 	}
 
@@ -174,7 +174,7 @@ class Terrace : Mod
 
 	override double GetValue (double x, double y, double z) const
 	{
-	  assert (m_pSourceMod[0] != NULL);
+	  assert (m_pSourceMod[0] != null);
 	  assert (m_controlPointCount >= 2);
 
 	  // Get the output value from the source module.

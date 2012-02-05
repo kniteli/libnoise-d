@@ -57,7 +57,7 @@ class Invert : Mod
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceMod[0] != NULL);
+      assert (m_pSourceMod[0] != null);
 
       return -(m_pSourceMod[0].GetValue (x, y, z));
     }

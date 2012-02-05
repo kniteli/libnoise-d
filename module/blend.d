@@ -89,7 +89,7 @@ class Blend : Mod
     /// module with an index value of 1.
     const ref Mod GetControlMod () const
     {
-      if (m_pSourceMod == NULL || m_pSourceMod[2] == NULL) {
+      if (m_pSourceMod == null || m_pSourceMod[2] == null) {
         throw ExceptionNoMod ();
       }
       return *(m_pSourceMod[2]);
@@ -102,9 +102,9 @@ class Blend : Mod
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceMod[0] != NULL);
-      assert (m_pSourceMod[1] != NULL);
-      assert (m_pSourceMod[2] != NULL);
+      assert (m_pSourceMod[0] != null);
+      assert (m_pSourceMod[1] != null);
+      assert (m_pSourceMod[2] != null);
 
       double v0 = m_pSourceMod[0].GetValue (x, y, z);
       double v1 = m_pSourceMod[1].GetValue (x, y, z);
@@ -133,7 +133,7 @@ class Blend : Mod
     /// module.
     void SetControlMod (const ref Mod controlMod)
     {
-      assert (m_pSourceMod != NULL);
+      assert (m_pSourceMod != null);
       m_pSourceMod[2] = &controlMod;
     }
 

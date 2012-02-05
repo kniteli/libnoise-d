@@ -52,7 +52,7 @@ class Plane
     /// Constructor.
     this ()
     {
-        m_pMod = NULL;
+        m_pMod = null;
     }
 
     /// Constructor
@@ -71,7 +71,7 @@ class Plane
     /// @pre A noise module was passed to the SetMod() method.
     const ref Mod GetMod () const
     {
-      assert (m_pMod != NULL);
+      assert (m_pMod != null);
       return *m_pMod;
     }
 
@@ -90,7 +90,7 @@ class Plane
     /// SetMod() method.
     double GetValue (double x, double z) const
     {
-        assert (m_pMod != NULL);
+        assert (m_pMod != null);
         return m_pMod.GetValue (x, 0, z);
     }
 

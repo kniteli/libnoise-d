@@ -99,7 +99,7 @@ enum NoiseQuality
 /// For an explanation of the difference between <i>gradient</i> noise and
 /// <i>value</i> noise, see the comments for the GradientNoise3D() function.
 double GradientCoherentNoise3D (double x, double y, double z, int seed = 0,
-  NoiseQuality noiseQuality = QUALITY_STD)
+  NoiseQuality noiseQuality = NoiseQuality.QUALITY_STD)
 {
   // Create a unit-length cube aligned along an integer boundary.  This cube
   // surrounds the input point.
@@ -113,18 +113,18 @@ double GradientCoherentNoise3D (double x, double y, double z, int seed = 0,
   // Map the difference between the coordinates of the input value and the
   // coordinates of the cube's outer-lower-left vertex onto an S-curve.
   double xs = 0, ys = 0, zs = 0;
-  switch (noiseQuality) {
-    case QUALITY_FAST:
+  final switch (noiseQuality) {
+    case NoiseQuality.QUALITY_FAST:
       xs = (x - cast(double)x0);
       ys = (y - cast(double)y0);
       zs = (z - cast(double)z0);
       break;
-    case QUALITY_STD:
+    case NoiseQuality.QUALITY_STD:
       xs = SCurve3 (x - cast(double)x0);
       ys = SCurve3 (y - cast(double)y0);
       zs = SCurve3 (z - cast(double)z0);
       break;
-    case QUALITY_BEST:
+    case NoiseQuality.QUALITY_BEST:
       xs = SCurve5 (x - cast(double)x0);
       ys = SCurve5 (y - cast(double)y0);
       zs = SCurve5 (z - cast(double)z0);
@@ -301,7 +301,7 @@ double MakeInt32Range (double n)
 /// For an explanation of the difference between <i>gradient</i> noise and
 /// <i>value</i> noise, see the comments for the GradientNoise3D() function.
 double ValueCoherentNoise3D (double x, double y, double z, int seed = 0,
-  NoiseQuality noiseQuality = QUALITY_STD)
+  NoiseQuality noiseQuality = NoiseQuality.QUALITY_STD)
 {
   // Create a unit-length cube aligned along an integer boundary.  This cube
   // surrounds the input point.
@@ -315,18 +315,18 @@ double ValueCoherentNoise3D (double x, double y, double z, int seed = 0,
   // Map the difference between the coordinates of the input value and the
   // coordinates of the cube's outer-lower-left vertex onto an S-curve.
   double xs = 0, ys = 0, zs = 0;
-  switch (noiseQuality) {
-    case QUALITY_FAST:
+  final switch (noiseQuality) {
+    case NoiseQuality.QUALITY_FAST:
       xs = (x - cast(double)x0);
       ys = (y - cast(double)y0);
       zs = (z - cast(double)z0);
       break;
-    case QUALITY_STD:
+    case NoiseQuality.QUALITY_STD:
       xs = SCurve3 (x - cast(double)x0);
       ys = SCurve3 (y - cast(double)y0);
       zs = SCurve3 (z - cast(double)z0);
       break;
-    case QUALITY_BEST:
+    case NoiseQuality.QUALITY_BEST:
       xs = SCurve5 (x - cast(double)x0);
       ys = SCurve5 (y - cast(double)y0);
       zs = SCurve5 (z - cast(double)z0);

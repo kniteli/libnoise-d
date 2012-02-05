@@ -51,7 +51,7 @@ class Line
     this ()
     {
         m_attenuate = true;
-        m_pMod = NULL;
+        m_pMod = null;
         m_x0 = 0.0;
         m_x1 = 1.0;
         m_y0 = 0.0;
@@ -96,7 +96,7 @@ class Line
     /// @pre A noise module was passed to the SetMod() method.
     const ref Mod GetMod () const
     {
-      assert (m_pMod != NULL);
+      assert (m_pMod != null);
       return *m_pMod;
     }
 
@@ -122,7 +122,7 @@ class Line
     /// extrapolated along the line that this segment is part of.
     double GetValue (double p) const
     {
-      assert (m_pMod != NULL);
+      assert (m_pMod != null);
 
       double x = (m_x1 - m_x0) * p + m_x0;
       double y = (m_y1 - m_y0) * p + m_y0;
