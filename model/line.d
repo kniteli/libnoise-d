@@ -64,7 +64,7 @@ class Line
     ///
     /// @param module The noise module that is used to generate the output
     /// values.
-    this (const ref Mod mod)
+    this (ref const(Mod) mod)
     {
         m_attenuate = true;
         m_pMod = &mod;
@@ -94,7 +94,7 @@ class Line
     /// @returns A reference to the noise module.
     ///
     /// @pre A noise module was passed to the SetMod() method.
-    const ref Mod GetMod () const
+    ref const(Mod) GetMod () const
     {
       assert (m_pMod != null);
       return *m_pMod;
@@ -166,7 +166,7 @@ class Line
     ///
     /// This noise module must exist for the lifetime of this object,
     /// until you pass a new noise module to this method.
-    void SetMod (const ref Mod mod)
+    void SetMod (ref const(Mod) mod)
     {
       m_pMod = &mod;
     }
@@ -191,7 +191,7 @@ class Line
     bool m_attenuate;
 
     /// A pointer to the noise module used to generate the output values.
-    const Mod* m_pMod;
+    const(Mod)* m_pMod;
 
     /// @a x coordinate of the start of the line segment.
     double m_x0;

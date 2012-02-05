@@ -33,7 +33,7 @@ class Cylinder {
 		m_pMod = null;
 	}
 
-	public this (const ref Mod mod)
+	public this (ref const(Mod) mod)
 	{
 		m_pMod = &mod;
 	}
@@ -44,7 +44,7 @@ class Cylinder {
 	/// @returns A reference to the noise module.
 	///
 	/// @pre A noise module was passed to the SetMod() method.
-	public const ref Mod GetMod () const
+	public ref const(Mod) GetMod () const
 	{
 		assert (m_pMod != null);
 		return *m_pMod;
@@ -85,11 +85,11 @@ class Cylinder {
 	///
 	/// This noise module must exist for the lifetime of this object,
 	/// until you pass a new noise module to this method.
-	public void SetMod (const ref Mod mod)
+	public void SetMod (ref const(Mod) mod)
 	{
 		m_pMod = &mod;
 	}
 
 	/// A pointer to the noise module used to generate the output values.
-	private const Mod* m_pMod;
+	private const(Mod)* m_pMod;
 }

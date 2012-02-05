@@ -101,17 +101,17 @@ class Displace : Mod
   /// @pre This displacement module has been added to this noise module
   /// via a call to SetSourceMod() or SetXDisplaceMod().
   ///
-  /// @throw ExceptionNoMod See the preconditions for more
+  /// @throw new ExceptionNoMod See the preconditions for more
   /// information.
   ///
   /// The GetValue() method displaces the input value by adding the output
   /// value from this displacement module to the @a x coordinate of the
   /// input value before returning the output value from the source
   /// module.
-  const ref Mod GetXDisplaceMod () const
+  ref const(Mod) GetXDisplaceMod () const
   {
     if (m_pSourceMod == null || m_pSourceMod[1] == null) {
-      throw ExceptionNoMod ();
+      throw new ExceptionNoMod ();
     }
     return *(m_pSourceMod[1]);
   }
@@ -123,17 +123,17 @@ class Displace : Mod
   /// @pre This displacement module has been added to this noise module
   /// via a call to SetSourceMod() or SetYDisplaceMod().
   ///
-  /// @throw ExceptionNoMod See the preconditions for more
+  /// @throw new ExceptionNoMod See the preconditions for more
   /// information.
   ///
   /// The GetValue() method displaces the input value by adding the output
   /// value from this displacement module to the @a y coordinate of the
   /// input value before returning the output value from the source
   /// module.
-  const ref Mod GetYDisplaceMod () const
+  ref const(Mod) GetYDisplaceMod () const
   {
     if (m_pSourceMod == null || m_pSourceMod[2] == null) {
-      throw ExceptionNoMod ();
+      throw new ExceptionNoMod ();
     }
     return *(m_pSourceMod[2]);
   }
@@ -145,17 +145,17 @@ class Displace : Mod
   /// @pre This displacement module has been added to this noise module
   /// via a call to SetSourceMod() or SetZDisplaceMod().
   ///
-  /// @throw ExceptionNoMod See the preconditions for more
+  /// @throw new ExceptionNoMod See the preconditions for more
   /// information.
   ///
   /// The GetValue() method displaces the input value by adding the output
   /// value from this displacement module to the @a z coordinate of the
   /// input value before returning the output value from the source
   /// module.
-  const ref Mod GetZDisplaceMod () const
+  ref const(Mod) GetZDisplaceMod () const
   {
     if (m_pSourceMod == null || m_pSourceMod[3] == null) {
-      throw ExceptionNoMod ();
+      throw new ExceptionNoMod ();
     }
     return *(m_pSourceMod[3]);
   }
@@ -180,8 +180,8 @@ class Displace : Mod
   ///
   /// These displacement modules must exist throughout the lifetime of
   /// this noise module unless another displacement module replaces it.
-  void SetDisplaceMods (const ref Mod xDisplaceMod,
-    const ref Mod yDisplaceMod, const ref Mod zDisplaceMod)
+  void SetDisplaceMods (ref const(Mod) xDisplaceMod,
+    ref const(Mod) yDisplaceMod, ref const(Mod) zDisplaceMod)
   {
     SetXDisplaceMod (xDisplaceMod);
     SetYDisplaceMod (yDisplaceMod);
@@ -205,7 +205,7 @@ class Displace : Mod
   ///
   /// This displacement module must exist throughout the lifetime of this
   /// noise module unless another displacement module replaces it.
-  void SetXDisplaceMod (const ref Mod xDisplaceMod)
+  void SetXDisplaceMod (ref const(Mod) xDisplaceMod)
   {
     assert (m_pSourceMod != null);
     m_pSourceMod[1] = &xDisplaceMod;
@@ -228,7 +228,7 @@ class Displace : Mod
   ///
   /// This displacement module must exist throughout the lifetime of this
   /// noise module unless another displacement module replaces it.
-  void SetYDisplaceMod (const ref Mod yDisplaceMod)
+  void SetYDisplaceMod (ref const(Mod) yDisplaceMod)
   {
     assert (m_pSourceMod != null);
     m_pSourceMod[2] = &yDisplaceMod;
@@ -251,7 +251,7 @@ class Displace : Mod
   ///
   /// This displacement module must exist throughout the lifetime of this
   /// noise module unless another displacement module replaces it.
-  void SetZDisplaceMod (const ref Mod zDisplaceMod)
+  void SetZDisplaceMod (ref const(Mod) zDisplaceMod)
   {
     assert (m_pSourceMod != null);
     m_pSourceMod[3] = &zDisplaceMod;

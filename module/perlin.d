@@ -324,7 +324,7 @@ class Perlin : Mod
     /// @pre The number of octaves ranges from 1 to
     /// module::PERLIN_MAX_OCTAVE.
     ///
-    /// @throw ExceptionInvalidParam An invalid parameter was
+    /// @throw new ExceptionInvalidParam An invalid parameter was
     /// specified; see the preconditions for more information.
     ///
     /// The number of octaves controls the amount of detail in the Perlin
@@ -335,7 +335,7 @@ class Perlin : Mod
     void SetOctaveCount (int octaveCount)
     {
       if (octaveCount < 1 || octaveCount > PERLIN_MAX_OCTAVE) {
-        throw ExceptionInvalidParam ();
+        throw new ExceptionInvalidParam ();
       }
       m_octaveCount = octaveCount;
     }

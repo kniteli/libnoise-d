@@ -90,7 +90,7 @@ class Cache : Mod
     }
 
 
-    override void SetSourceMod (int index, const ref Mod sourceMod)
+    override void SetSourceMod (int index, ref const(Mod) sourceMod)
     {
       super.SetSourceMod (index, sourceMod);
       m_isCached = false;

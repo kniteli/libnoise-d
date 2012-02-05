@@ -106,7 +106,7 @@ class Select : Mod
     /// @pre A control module has been added to this noise module via a
     /// call to SetSourceMod() or SetControlMod().
     ///
-    /// @throw ExceptionNoMod See the preconditions for more
+    /// @throw new ExceptionNoMod See the preconditions for more
     /// information.
     ///
     /// The control module determines the output value to select.  If the
@@ -115,10 +115,10 @@ class Select : Mod
     /// the value from the source module with an index value of 1.
     /// Otherwise, this method outputs the value from the source module
     /// with an index value of 0.
-    const ref Mod GetControlMod () const
+    ref const(Mod) GetControlMod () const
     {
       if (m_pSourceMod == null || m_pSourceMod[2] == null) {
-        throw ExceptionNoMod ();
+        throw new ExceptionNoMod ();
       }
       return *(m_pSourceMod[2]);
     }
@@ -234,7 +234,7 @@ class Select : Mod
     /// @pre The lower bound must be less than or equal to the upper
     /// bound.
     ///
-    /// @throw ExceptionInvalidParam An invalid parameter was
+    /// @throw new ExceptionInvalidParam An invalid parameter was
     /// specified; see the preconditions for more information.
     ///
     /// If the output value from the control module is within the
@@ -271,7 +271,7 @@ class Select : Mod
     /// This control module must exist throughout the lifetime of this
     /// noise module unless another control module replaces that control
     /// module.
-    void SetControlMod (const ref Mod controlMod)
+    void SetControlMod (ref const(Mod) controlMod)
     {
       assert (m_pSourceMod != null);
       m_pSourceMod[2] = &controlMod;

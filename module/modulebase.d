@@ -251,13 +251,13 @@ class Mod
     /// @pre A source module with the specified index value has been added
     /// to this noise module via a call to SetSourceMod().
     ///
-    /// @throw noise::ExceptionNoMod See the preconditions for more
+    /// @throw new noise::ExceptionNoMod See the preconditions for more
     /// information.
     ///
     /// Each noise module requires the attachment of a certain number of
     /// source modules before an application can call the GetValue()
     /// method.
-    const ref Mod GetSourceMod(int index) const
+    ref const(Mod) GetSourceMod(int index) const
     {
       assert (m_pSourceMod != null);
 
@@ -270,7 +270,7 @@ class Mod
       //   m_pSourceMod[index] == null
       if (index >= GetSourceModCount () || index < 0
         || m_pSourceMod[index] == null) {
-        throw ExceptionNoMod ();
+        throw new ExceptionNoMod ();
       }
       return *(m_pSourceMod[index]);
     }
@@ -311,7 +311,7 @@ class Mod
     /// @pre The index value ranges from 0 to one less than the number of
     /// source modules required by this noise module.
     ///
-    /// @throw noise::ExceptionInvalidParam An invalid parameter was
+    /// @throw new noise::ExceptionInvalidParam An invalid parameter was
     /// specified; see the preconditions for more information.
     ///
     /// A noise module mathematically combines the output values from the
@@ -333,11 +333,11 @@ class Mod
     ///
     /// A noise module does not modify a source module; it only modifies
     /// its output values.
-    void SetSourceMod(int index, const ref Mod sourceMod)
+    void SetSourceMod(int index, ref const(Mod) sourceMod)
     {
       assert (m_pSourceMod != null);
       if (index >= GetSourceModCount () || index < 0) {
-        throw ExceptionInvalidParam ();
+        throw new ExceptionInvalidParam ();
       }
       m_pSourceMod[index] = &sourceMod;
     }
@@ -346,7 +346,7 @@ class Mod
 
     /// An array containing the pointers to each source module required by
     /// this noise module.
-    const Mod** m_pSourceMod;
+    const(Mod)** m_pSourceMod;
 
   private:
 
@@ -356,7 +356,7 @@ class Mod
     /// This restriction is necessary because if this object was copied,
     /// all source modules assigned to this noise module would need to be
     /// copied as well.
-    final const ref Mod opAssign (const ref Mod m)
+    final ref const(Mod) opAssign (ref const(Mod) m)
     {
       return *this;
     }

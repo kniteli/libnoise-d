@@ -29,6 +29,9 @@ module noise.exception;
 /// An invalid parameter was passed to a libnoise function or method.
 class ExceptionInvalidParam : Exception
 {
+	this() {
+		super("");
+	}
 };
 
 /// No module exception
@@ -41,6 +44,9 @@ class ExceptionInvalidParam : Exception
 /// is done for performance reasons.
 class ExceptionNoMod : Exception
 {
+	this() {
+		super("");
+	}
 };
 
 /// Out of memory exception
@@ -48,6 +54,9 @@ class ExceptionNoMod : Exception
 /// There was not enough memory to perform an action.
 class ExceptionOutOfMemory : Exception
 {
+	this() {
+		super("");
+	}
 };
 
 /// Unknown exception
@@ -55,6 +64,9 @@ class ExceptionOutOfMemory : Exception
 /// libnoise raised an unknown exception.
 class ExceptionUnknown : Exception
 {
+	this() {
+		super("");
+	}
 };
 
 /// @}

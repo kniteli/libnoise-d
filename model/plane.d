@@ -59,7 +59,7 @@ class Plane
     ///
     /// @param module The noise module that is used to generate the output
     /// values.
-    this (const ref Mod mod) {
+    this (ref const(Mod) mod) {
         m_pMod = &mod;
     }
 
@@ -69,7 +69,7 @@ class Plane
     /// @returns A reference to the noise module.
     ///
     /// @pre A noise module was passed to the SetMod() method.
-    const ref Mod GetMod () const
+    ref const(Mod) GetMod () const
     {
       assert (m_pMod != null);
       return *m_pMod;
@@ -101,7 +101,7 @@ class Plane
     ///
     /// This noise module must exist for the lifetime of this object,
     /// until you pass a new noise module to this method.
-    void SetMod (const ref Mod mod)
+    void SetMod (ref const(Mod) mod)
     {
       m_pMod = &mod;
     }
@@ -109,7 +109,7 @@ class Plane
   private:
 
     /// A pointer to the noise module used to generate the output values.
-    const Mod* m_pMod;
+    const(Mod)* m_pMod;
 
 }
 

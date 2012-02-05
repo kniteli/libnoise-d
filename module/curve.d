@@ -97,7 +97,7 @@ class Curve : Mod
     ///
     /// @pre No two control points have the same input value.
     ///
-    /// @throw ExceptionInvalidParam An invalid parameter was
+    /// @throw new ExceptionInvalidParam An invalid parameter was
     /// specified; see the preconditions for more information.
     ///
     /// It does not matter which order these points are added.
@@ -129,7 +129,7 @@ class Curve : Mod
     /// It is recommended that an application does not store this pointer
     /// for later use since the pointer to the array may change if the
     /// application calls another method of this object.
-    const ControlPoint* GetControlPointArray () const
+    const (ControlPoint)[] GetControlPointArray () const
     {
       return m_pControlPoints;
     }
@@ -204,7 +204,7 @@ class Curve : Mod
     ///
     /// @pre No two control points have the same input value.
     ///
-    /// @throw ExceptionInvalidParam An invalid parameter was
+    /// @throw new ExceptionInvalidParam An invalid parameter was
     /// specified; see the preconditions for more information.
     ///
     /// By inserting the control point at the returned array index, this
@@ -221,8 +221,8 @@ class Curve : Mod
           break;
         } else if (inputValue == m_pControlPoints[insertionPos].inputValue) {
           // Each control point is required to contain a unique input value, so
-          // throw an exception.
-          throw ExceptionInvalidParam ();
+          // throw new an exception.
+          throw new ExceptionInvalidParam ();
         }
       }
       return insertionPos;
@@ -251,7 +251,7 @@ class Curve : Mod
       // control point array.  The position is determined by the input value of
       // the control point; the control points must be sorted by input value
       // within that array.
-      ControlPoint* newControlPoints = new ControlPoint[m_controlPointCount + 1];
+      ControlPoint[] newControlPoints = new ControlPoint[m_controlPointCount + 1];
       for (int i = 0; i < m_controlPointCount; i++) {
         if (i < insertionPos) {
           newControlPoints[i] = m_pControlPoints[i];
@@ -272,7 +272,7 @@ class Curve : Mod
     int m_controlPointCount;
 
     /// Array that stores the control points.
-    ControlPoint* m_pControlPoints;
+    ControlPoint[] m_pControlPoints;
 
 };
 

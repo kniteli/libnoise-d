@@ -130,7 +130,7 @@ class Clamp : Mod
     /// @pre The lower bound must be less than or equal to the
     /// upper bound.
     ///
-    /// @throw ExceptionInvalidParam An invalid parameter was
+    /// @throw new ExceptionInvalidParam An invalid parameter was
     /// specified; see the preconditions for more information.
     ///
     /// If the output value from the source module is less than the lower

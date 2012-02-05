@@ -79,7 +79,7 @@ class Blend : Mod
     /// @pre A control module has been added to this noise module via a
     /// call to SetSourceMod() or SetControlMod().
     ///
-    /// @throw noise::ExceptionNoMod See the preconditions for more
+    /// @throw new noise::ExceptionNoMod See the preconditions for more
     /// information.
     ///
     /// The control module determines the weight of the blending
@@ -87,10 +87,10 @@ class Blend : Mod
     /// value from the source module with an index value of 0.  Positive
     /// values weigh the blend towards the output value from the source
     /// module with an index value of 1.
-    const ref Mod GetControlMod () const
+    ref const(Mod) GetControlMod () const
     {
       if (m_pSourceMod == null || m_pSourceMod[2] == null) {
-        throw ExceptionNoMod ();
+        throw new ExceptionNoMod ();
       }
       return *(m_pSourceMod[2]);
     }
@@ -131,7 +131,7 @@ class Blend : Mod
     /// This control module must exist throughout the lifetime of this
     /// noise module unless another control module replaces that control
     /// module.
-    void SetControlMod (const ref Mod controlMod)
+    void SetControlMod (ref const(Mod) controlMod)
     {
       assert (m_pSourceMod != null);
       m_pSourceMod[2] = &controlMod;

@@ -243,7 +243,7 @@ class Billow : Mod
     /// @pre The number of octaves ranges from 1 to
     /// noise::module::BILLOW_MAX_OCTAVE.
     ///
-    /// @throw noise::ExceptionInvalidParam An invalid parameter was
+    /// @throw new noise::ExceptionInvalidParam An invalid parameter was
     /// specified; see the preconditions for more information.
     ///
     /// The number of octaves controls the amount of detail in the billowy
@@ -254,7 +254,7 @@ class Billow : Mod
     void SetOctaveCount (int octaveCount)
     {
       if (octaveCount < 1 || octaveCount > BILLOW_MAX_OCTAVE) {
-        throw ExceptionInvalidParam ();
+        throw new ExceptionInvalidParam ();
       }
       m_octaveCount = octaveCount;
     }

@@ -89,7 +89,7 @@ class Terrace : Mod
 	///
 	/// @pre No two control points have the same value.
 	///
-	/// @throw ExceptionInvalidParam An invalid parameter was
+	/// @throw new ExceptionInvalidParam An invalid parameter was
 	/// specified; see the preconditions for more information.
 	///
 	/// Two or more control points define the terrace-forming curve.  The
@@ -230,7 +230,7 @@ class Terrace : Mod
 	/// @post The previous control points on the terrace-forming curve are
 	/// deleted.
 	///
-	/// @throw ExceptionInvalidParam An invalid parameter was
+	/// @throw new ExceptionInvalidParam An invalid parameter was
 	/// specified; see the preconditions for more information.
 	///
 	/// Two or more control points define the terrace-forming curve.  The
@@ -239,7 +239,7 @@ class Terrace : Mod
 	void MakeControlPoints (int controlPointCount)
 	{
 	  if (controlPointCount < 2) {
-	    throw ExceptionInvalidParam ();
+	    throw new ExceptionInvalidParam ();
 	  }
 
 	  ClearAllControlPoints ();
@@ -263,7 +263,7 @@ class Terrace : Mod
 	///
 	/// @pre No two control points have the same value.
 	///
-	/// @throw ExceptionInvalidParam An invalid parameter was
+	/// @throw new ExceptionInvalidParam An invalid parameter was
 	/// specified; see the preconditions for more information.
 	///
 	/// By inserting the control point at the returned array index, this
@@ -281,7 +281,7 @@ class Terrace : Mod
 	    } else if (value == m_pControlPoints[insertionPos]) {
 	      // Each control point is required to contain a unique value, so throw
 	      // an exception.
-	      throw ExceptionInvalidParam ();
+	      throw new ExceptionInvalidParam ();
 	    }
 	  }
 	  return insertionPos;
