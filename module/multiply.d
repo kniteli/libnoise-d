@@ -19,9 +19,9 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.multiply;
+module noise.mod.multiply;
 
-import noise.module.modulebase;
+import noise.mod.modulebase;
 
 /// @addtogroup libnoise
 /// @{
@@ -38,7 +38,7 @@ import noise.module.modulebase;
 /// @image html modulemultiply.png
 ///
 /// This noise module requires two source modules.
-class Multiply : Module
+class Multiply : Mod
 {
 
   public:
@@ -46,21 +46,21 @@ class Multiply : Module
     /// Constructor.
     this()
     {
-        super(this.GetSourceModuleCount());
+        super(this.GetSourceModCount());
     }
 
-    override int GetSourceModuleCount () const
+    override int GetSourceModCount () const
     {
       return 2;
     }
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceModule[0] != NULL);
-      assert (m_pSourceModule[1] != NULL);
+      assert (m_pSourceMod[0] != NULL);
+      assert (m_pSourceMod[1] != NULL);
 
-      return m_pSourceModule[0].GetValue (x, y, z)
-           * m_pSourceModule[1].GetValue (x, y, z);
+      return m_pSourceMod[0].GetValue (x, y, z)
+           * m_pSourceMod[1].GetValue (x, y, z);
     }
 
 };

@@ -37,7 +37,7 @@ private {
 ///
 /// @pre lat must range from @b -90 to @b +90.
 /// @pre lon must range from @b -180 to @b +180.
-void LatLonToXYZ (double lat, double lon, double& x, double& y, double& z)
+void LatLonToXYZ (double lat, double lon, ref double x, ref double y, ref double z)
 {
   double r = cos (DEG_TO_RAD * lat);
   x = r * cos (DEG_TO_RAD * lon);

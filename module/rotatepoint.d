@@ -19,9 +19,9 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.rotatepoint;
+module noise.mod.rotatepoint;
 
-import noise.module.modulebase;
+import noise.mod.modulebase;
 import noise.mathconsts;
 
 /// @addtogroup libnoise
@@ -62,7 +62,7 @@ const double DEFAULT_ROTATE_Z = 0.0;
 /// and @a z increases inward.)
 ///
 /// This noise module requires one source module.
-class RotatePoint : Module
+class RotatePoint : Mod
 {
 
   public:
@@ -79,23 +79,23 @@ class RotatePoint : Module
     /// set to module::DEFAULT_ROTATE_Z.
     this()
     {
-        super(this.GetSourceModuleCount());
+        super(this.GetSourceModCount());
         SetAngles (DEFAULT_ROTATE_X, DEFAULT_ROTATE_Y, DEFAULT_ROTATE_Z);
     }
 
-    override int GetSourceModuleCount () const
+    override int GetSourceModCount () const
     {
       return 1;
     }
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceModule[0] != NULL);
+      assert (m_pSourceMod[0] != NULL);
 
       double nx = (m_x1Matrix * x) + (m_y1Matrix * y) + (m_z1Matrix * z);
       double ny = (m_x2Matrix * x) + (m_y2Matrix * y) + (m_z2Matrix * z);
       double nz = (m_x3Matrix * x) + (m_y3Matrix * y) + (m_z3Matrix * z);
-      return m_pSourceModule[0].GetValue (nx, ny, nz);
+      return m_pSourceMod[0].GetValue (nx, ny, nz);
     }
 
     /// Returns the rotation angle around the @a x axis to apply to the

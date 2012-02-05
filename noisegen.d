@@ -216,9 +216,9 @@ double GradientNoise3D (double fx, double fy, double fz, int ix, int iy,
 
   // Set up us another vector equal to the distance between the two vectors
   // passed to this function.
-  double xvPoint = (fx - (double)ix);
-  double yvPoint = (fy - (double)iy);
-  double zvPoint = (fz - (double)iz);
+  double xvPoint = (fx - cast(double)ix);
+  double yvPoint = (fy - cast(double)iy);
+  double zvPoint = (fz - cast(double)iz);
 
   // Now compute the dot product of the gradient vector with the distance
   // vector.  The resulting value is gradient noise.  Apply a scaling value

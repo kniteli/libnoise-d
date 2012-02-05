@@ -19,9 +19,9 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.max;
+module noise.mod.max;
 
-import noise.module.modulebase;
+import noise.mod.modulebase;
 import noise.misc;
 
 /// @addtogroup libnoise
@@ -39,7 +39,7 @@ import noise.misc;
 /// @image html modulemax.png
 ///
 /// This noise module requires two source modules.
-class Max : Module
+class Max : Mod
 {
 
   public:
@@ -47,21 +47,21 @@ class Max : Module
     /// Constructor.
     this()
     {
-        super(this.GetSourceModuleCount());
+        super(this.GetSourceModCount());
     }
 
-    override int GetSourceModuleCount () const
+    override int GetSourceModCount () const
     {
       return 2;
     }
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceModule[0] != NULL);
-      assert (m_pSourceModule[1] != NULL);
+      assert (m_pSourceMod[0] != NULL);
+      assert (m_pSourceMod[1] != NULL);
 
-      double v0 = m_pSourceModule[0].GetValue (x, y, z);
-      double v1 = m_pSourceModule[1].GetValue (x, y, z);
+      double v0 = m_pSourceMod[0].GetValue (x, y, z);
+      double v1 = m_pSourceMod[1].GetValue (x, y, z);
       return GetMax (v0, v1);
     }
 

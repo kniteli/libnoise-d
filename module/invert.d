@@ -19,9 +19,9 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.invert;
+module noise.mod.invert;
 
-import noise.module.modulebase;
+import noise.mod.modulebase;
 
 /// @addtogroup libnoise
 /// @{
@@ -37,7 +37,7 @@ import noise.module.modulebase;
 /// @image html moduleinvert.png
 ///
 /// This noise module requires one source module.
-class Invert : Module
+class Invert : Mod
 {
 
   public:
@@ -45,19 +45,19 @@ class Invert : Module
     /// Constructor.
     this()
     {
-        super(this.GetSourceModuleCount());
+        super(this.GetSourceModCount());
     }
 
-    override int GetSourceModuleCount () const
+    override int GetSourceModCount () const
     {
       return 1;
     }
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceModule[0] != NULL);
+      assert (m_pSourceMod[0] != NULL);
 
-      return -(m_pSourceModule[0].GetValue (x, y, z));
+      return -(m_pSourceMod[0].GetValue (x, y, z));
     }
 
 };

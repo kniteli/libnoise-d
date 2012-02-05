@@ -19,9 +19,9 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.const;
+module noise.mod.constantsants;
 
-import noise.module.modulebase;
+import noise.mod.modulebase;
 
 /// @addtogroup libnoise
 /// @{
@@ -29,7 +29,7 @@ import noise.module.modulebase;
 /// @addtogroup modules
 /// @{
 
-/// @defgroup generatormodules Generator Modules
+/// @defgroup generatormodules Generator Mods
 /// @addtogroup generatormodules
 /// @{
 
@@ -46,7 +46,7 @@ const double DEFAULT_CONST_VALUE = 0.0;
 /// source module for other noise modules.
 ///
 /// This noise module does not require any source modules.
-class Const : Module
+class Const : Mod
 {
 
   public:
@@ -57,7 +57,7 @@ class Const : Module
     /// module::DEFAULT_CONST_VALUE.
     this()
     {
-        super(this.GetSourceModuleCount());
+        super(this.GetSourceModCount());
         m_constValue = DEFAULT_CONST_VALUE;
     }
 
@@ -69,7 +69,7 @@ class Const : Module
       return m_constValue;
     }
 
-    override int GetSourceModuleCount () const
+    override int GetSourceModCount () const
     {
       return 0;
     }

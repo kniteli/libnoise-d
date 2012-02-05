@@ -19,9 +19,9 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.cache;
+module noise.mod.cache;
 
-import noise.module.modulebase;
+import noise.mod.modulebase;
 
 /// @addtogroup libnoise
 /// @{
@@ -29,7 +29,7 @@ import noise.module.modulebase;
 /// @addtogroup modules
 /// @{
 
-/// @defgroup miscmodules Miscellaneous Modules
+/// @defgroup miscmodules Miscellaneous Mods
 /// @addtogroup miscmodules
 /// @{
 
@@ -47,7 +47,7 @@ import noise.module.modulebase;
 /// module returns the cached output value without having the source
 /// module recalculate the output value.
 ///
-/// If an application passes a new source module to the SetSourceModule()
+/// If an application passes a new source module to the SetSourceMod()
 /// method, the cache is invalidated.
 ///
 /// Caching a noise module is useful if it is used as a source module for
@@ -56,7 +56,7 @@ import noise.module.modulebase;
 /// noise module in which it is included.
 ///
 /// This noise module requires one source module.
-class Cache : Module
+class Cache : Mod
 {
 
   public:
@@ -64,21 +64,21 @@ class Cache : Module
     /// Constructor.
     this ()
     {
-        super(this.GetSourceModuleCount());
+        super(this.GetSourceModCount());
         m_isCached = false;
     }
 
-    override int GetSourceModuleCount () const
+    override int GetSourceModCount () const
     {
       return 1;
     }
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceModule[0] != NULL);
+      assert (m_pSourceMod[0] != NULL);
 
       if (!(m_isCached && x == m_xCache && y == m_yCache && z == m_zCache)) {
-        m_cachedValue = m_pSourceModule[0].GetValue (x, y, z);
+        m_cachedValue = m_pSourceMod[0].GetValue (x, y, z);
         m_xCache = x;
         m_yCache = y;
         m_zCache = z;
@@ -88,29 +88,29 @@ class Cache : Module
     }
 
 
-    override void SetSourceModule (int index, const Module& sourceModule)
+    override void SetSourceMod (int index, const ref Mod sourceMod)
     {
-      super.SetSourceModule (index, sourceModule);
+      super.SetSourceMod (index, sourceMod);
       m_isCached = false;
     }
 
   protected:
 
     /// The cached output value at the cached input value.
-    mutable double m_cachedValue;
+    double m_cachedValue;
 
     /// Determines if a cached output value is stored in this noise
     /// module.
-    mutable double m_isCached;
+    double m_isCached;
 
     /// @a x coordinate of the cached input value.
-    mutable double m_xCache;
+    double m_xCache;
 
     /// @a y coordinate of the cached input value.
-    mutable double m_yCache;
+    double m_yCache;
 
     /// @a z coordinate of the cached input value.
-    mutable double m_zCache;
+    double m_zCache;
 
 }
 

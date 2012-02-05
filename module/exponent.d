@@ -19,9 +19,9 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.exponent;
+module noise.mod.exponent;
 
-import noise.module.modulebase;
+import noise.mod.modulebase;
 
 /// @addtogroup libnoise
 /// @{
@@ -46,7 +46,7 @@ const double DEFAULT_EXPONENT = 1.0;
 /// rescales that value back to the original range.
 ///
 /// This noise module requires one source module.
-class Exponent : Module
+class Exponent : Mod
 {
 
   public:
@@ -56,7 +56,7 @@ class Exponent : Module
     /// The default exponent is set to module::DEFAULT_EXPONENT.
     this ()
     {
-        super(GetSourceModuleCount ());
+        super(GetSourceModCount ());
         m_exponent = DEFAULT_EXPONENT;
     }
 
@@ -74,16 +74,16 @@ class Exponent : Module
       return m_exponent;
     }
 
-    override int GetSourceModuleCount () const
+    override int GetSourceModCount () const
     {
       return 1;
     }
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceModule[0] != NULL);
+      assert (m_pSourceMod[0] != NULL);
 
-      double value = m_pSourceModule[0].GetValue (x, y, z);
+      double value = m_pSourceMod[0].GetValue (x, y, z);
       return (pow (fabs ((value + 1.0) / 2.0), m_exponent) * 2.0 - 1.0);
     }
 

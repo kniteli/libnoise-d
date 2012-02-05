@@ -18,9 +18,9 @@
 //
 // The developer's email is angstrom@lionsanctuary.net
 //
-module noise.module.power;
+module noise.mod.power;
 
-import noise.module.modulebase;
+import noise.mod.modulebase;
 
 /// @addtogroup libnoise
 /// @{
@@ -28,7 +28,7 @@ import noise.module.modulebase;
 /// @addtogroup modules
 /// @{
 
-/// @defgroup combinermodules Combiner Modules
+/// @defgroup combinermodules Combiner Mods
 /// @addtogroup combinermodules
 /// @{
 
@@ -42,7 +42,7 @@ import noise.module.modulebase;
 /// The second source module must have an index value of 1.
 ///
 /// This noise module requires two source modules.
-class Power : Module
+class Power : Mod
 {
 
   public:
@@ -50,21 +50,21 @@ class Power : Module
     /// Constructor.
     this()
     {
-        super(this.GetSourceModuleCount());
+        super(this.GetSourceModCount());
     }
 
-    override int GetSourceModuleCount () const
+    override int GetSourceModCount () const
     {
       return 2;
     }
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceModule[0] != NULL);
-      assert (m_pSourceModule[1] != NULL);
+      assert (m_pSourceMod[0] != NULL);
+      assert (m_pSourceMod[1] != NULL);
 
-      return pow (m_pSourceModule[0].GetValue (x, y, z),
-        m_pSourceModule[1].GetValue (x, y, z));
+      return pow (m_pSourceMod[0].GetValue (x, y, z),
+        m_pSourceMod[1].GetValue (x, y, z));
     }
 
 };

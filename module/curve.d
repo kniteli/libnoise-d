@@ -19,10 +19,10 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.curve;
+module noise.mod.curve;
 
 private {
-    import noise.module.modulebase;
+    import noise.mod.modulebase;
     import noise.interp;
     import noise.misc;
 }
@@ -74,7 +74,7 @@ struct ControlPoint
 /// added to the curve.  
 ///
 /// This noise module requires one source module.
-class Curve : Module
+class Curve : Mod
 {
 
   public:
@@ -82,7 +82,7 @@ class Curve : Module
     /// Constructor.
     this ()
     {
-        super(this.GetSourceModuleCount ());
+        super(this.GetSourceModCount ());
         m_pControlPoints = NULL;
         m_controlPointCount = 0;
     }
@@ -142,24 +142,24 @@ class Curve : Module
       return m_controlPointCount;
     }
 
-    override int GetSourceModuleCount () const
+    override int GetSourceModCount () const
     {
       return 1;
     }
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceModule[0] != NULL);
+      assert (m_pSourceMod[0] != NULL);
       assert (m_controlPointCount >= 4);
 
       // Get the output value from the source module.
-      double sourceModuleValue = m_pSourceModule[0].GetValue (x, y, z);
+      double sourceModValue = m_pSourceMod[0].GetValue (x, y, z);
 
       // Find the first element in the control point array that has an input value
       // larger than the output value from the source module.
       int indexPos;
       for (indexPos = 0; indexPos < m_controlPointCount; indexPos++) {
-        if (sourceModuleValue < m_pControlPoints[indexPos].inputValue) {
+        if (sourceModValue < m_pControlPoints[indexPos].inputValue) {
           break;
         }
       }
@@ -182,7 +182,7 @@ class Curve : Module
       // Compute the alpha value used for cubic interpolation.
       double input0 = m_pControlPoints[index1].inputValue;
       double input1 = m_pControlPoints[index2].inputValue;
-      double alpha = (sourceModuleValue - input0) / (input1 - input0);
+      double alpha = (sourceModValue - input0) / (input1 - input0);
 
       // Now perform the cubic interpolation given the alpha value.
       return CubicInterp (

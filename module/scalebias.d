@@ -19,9 +19,9 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.scalebias;
+module noise.mod.scalebias;
 
-import noise.module.modulebase;
+import noise.mod.modulebase;
 
 /// @addtogroup libnoise
 /// @{
@@ -48,7 +48,7 @@ const double DEFAULT_SCALE = 1.0;
 /// outputs the value.
 ///
 /// This noise module requires one source module.
-class ScaleBias : Module
+class ScaleBias : Mod
 {
 
   public:
@@ -60,7 +60,7 @@ class ScaleBias : Module
     /// The default scaling factor is set to module::DEFAULT_SCALE.
     this()
     {
-        super(this.GetSourceModuleCount ());
+        super(this.GetSourceModCount ());
         m_bias = DEFAULT_BIAS;
         m_scale = DEFAULT_SCALE;
     }
@@ -91,16 +91,16 @@ class ScaleBias : Module
       return m_scale;
     }
 
-    override int GetSourceModuleCount () const
+    override int GetSourceModCount () const
     {
       return 1;
     }
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceModule[0] != NULL);
+      assert (m_pSourceMod[0] != NULL);
 
-      return m_pSourceModule[0].GetValue (x * m_xScale, y * m_yScale,
+      return m_pSourceMod[0].GetValue (x * m_xScale, y * m_yScale,
         z * m_zScale);
     }
 

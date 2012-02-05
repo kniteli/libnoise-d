@@ -19,10 +19,10 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.abs;
+module noise.mod.abs;
 
 private {
-    import noise.module.modulebase;
+    import noise.mod.modulebase;
 }
 
 /// @addtogroup libnoise
@@ -31,7 +31,7 @@ private {
 /// @addtogroup modules
 /// @{
 
-/// @defgroup modifiermodules Modifier Modules
+/// @defgroup modifiermodules Modifier Mods
 /// @addtogroup modifiermodules
 /// @{
 
@@ -42,7 +42,7 @@ private {
 ///
 /// This noise module requires one source module.
 
-class Abs: Module
+class Abs: Mod
 {
 
   public:
@@ -50,19 +50,19 @@ class Abs: Module
     /// Constructor.
     this ()
     {
-        super(this.GetSourceModuleCount());
+        super(this.GetSourceModCount());
     }
 
-    int GetSourceModuleCount () const
+    int GetSourceModCount () const
     {
       return 1;
     }
 
     double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceModule[0] != NULL);
+      assert (m_pSourceMod[0] != NULL);
 
-      return fabs (m_pSourceModule[0].GetValue (x, y, z));
+      return fabs (m_pSourceMod[0].GetValue (x, y, z));
     }
 
 };

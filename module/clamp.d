@@ -19,9 +19,9 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.clamp;
+module noise.mod.clamp;
 
-import noise.module.modulebase;
+import noise.mod.modulebase;
 
 /// @addtogroup libnoise
 /// @{
@@ -58,7 +58,7 @@ const double DEFAULT_CLAMP_UPPER_BOUND = 1.0;
 /// SetBounds() method.
 ///
 /// This noise module requires one source module.
-class Clamp : Module
+class Clamp : Mod
 {
 
   public:
@@ -72,7 +72,7 @@ class Clamp : Module
     /// module::DEFAULT_CLAMP_UPPER_BOUND.
     this()
     {
-        super(this.GetSourceModuleCount());
+        super(this.GetSourceModCount());
         m_lowerBound = DEFAULT_CLAMP_LOWER_BOUND;
         m_upperBound = DEFAULT_CLAMP_UPPER_BOUND;
     }
@@ -89,7 +89,7 @@ class Clamp : Module
       return m_lowerBound;
     }
 
-    override int GetSourceModuleCount() const
+    override int GetSourceModCount() const
     {
       return 1;
     }
@@ -108,9 +108,9 @@ class Clamp : Module
 
     override double GetValue(double x, double y, double z) const
     {
-      assert (m_pSourceModule[0] != NULL);
+      assert (m_pSourceMod[0] != NULL);
 
-      double value = m_pSourceModule[0].GetValue (x, y, z);
+      double value = m_pSourceMod[0].GetValue (x, y, z);
       if (value < m_lowerBound) {
         return m_lowerBound;
       } else if (value > m_upperBound) {

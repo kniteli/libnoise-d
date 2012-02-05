@@ -19,9 +19,9 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.billow;
+module noise.mod.billow;
 
-import noise.module.modulebase;
+import noise.mod.modulebase;
 
 /// @addtogroup libnoise
 /// @{
@@ -67,7 +67,7 @@ const int BILLOW_MAX_OCTAVE = 30;
 /// this noise module modifies each octave with an absolute-value
 /// function.  See the documentation of noise::module::Perlin for more
 /// information.
-class Billow : Module
+class Billow : Mod
 {
 
   public:
@@ -90,7 +90,7 @@ class Billow : Module
     /// noise::module::DEFAULT_BILLOW_SEED.
     this () 
     {
-        super(this.GetSourceModuleCount());
+        super(this.GetSourceModCount());
         m_frequency = DEFAULT_BILLOW_FREQUENCY;
         m_lacunarity = DEFAULT_BILLOW_LACUNARITY;
         m_noiseQuality = DEFAULT_BILLOW_QUALITY;
@@ -158,7 +158,7 @@ class Billow : Module
       return m_seed;
     }
 
-    override int GetSourceModuleCount () const
+    override int GetSourceModCount () const
     {
       return 0;
     }

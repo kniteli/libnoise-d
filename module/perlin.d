@@ -19,9 +19,9 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.perlin;
+module noise.mod.perlin;
 
-import noise.module.modulebase;
+import noise.mod.modulebase;
 
 /// @addtogroup libnoise
 /// @{
@@ -149,7 +149,7 @@ const int PERLIN_MAX_OCTAVE = 30;
 /// better coherent-noise function called <i>gradient noise</i>.  This
 /// version of module::Perlin uses gradient coherent noise to
 /// generate Perlin noise.
-class Perlin : Module
+class Perlin : Mod
 {
 
   public:
@@ -172,7 +172,7 @@ class Perlin : Module
     /// module::DEFAULT_PERLIN_SEED.
     this()
     {
-        super(this.GetSourceModuleCount());
+        super(this.GetSourceModCount());
         m_frequency = DEFAULT_PERLIN_FREQUENCY;
         m_lacunarity = DEFAULT_PERLIN_LACUNARITY;
         m_noiseQuality = DEFAULT_PERLIN_QUALITY;
@@ -240,7 +240,7 @@ class Perlin : Module
       return m_seed;
     }
 
-    override int GetSourceModuleCount () const
+    override int GetSourceModCount () const
     {
       return 0;
     }

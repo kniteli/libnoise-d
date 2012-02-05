@@ -19,9 +19,9 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.translatepoint;
+module noise.mod.translatepoint;
 
-import noise.module.modulebase;
+import noise.mod.modulebase;
 
 /// @addtogroup libnoise
 /// @{
@@ -58,7 +58,7 @@ const double DEFAULT_TRANSLATE_POINT_Z = 0.0;
 /// respectively.
 ///
 /// This noise module requires one source module.
-class TranslatePoint : Module
+class TranslatePoint : Mod
 {
 
   public:
@@ -75,22 +75,22 @@ class TranslatePoint : Module
     /// set to module::DEFAULT_TRANSLATE_POINT_Z.
     this()
     {
-        super(this.GetSourceModuleCount ());
+        super(this.GetSourceModCount ());
         m_xTranslation = DEFAULT_TRANSLATE_POINT_X;
         m_yTranslation = DEFAULT_TRANSLATE_POINT_Y;
         m_zTranslation = DEFAULT_TRANSLATE_POINT_Z;
     }
 
-    override int GetSourceModuleCount () const
+    override int GetSourceModCount () const
     {
       return 1;
     }
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceModule[0] != NULL);
+      assert (m_pSourceMod[0] != NULL);
 
-      return m_pSourceModule[0].GetValue (x + m_xTranslation, y + m_yTranslation,
+      return m_pSourceMod[0].GetValue (x + m_xTranslation, y + m_yTranslation,
         z + m_zTranslation);
     }
 

@@ -38,7 +38,7 @@ class ExceptionInvalidParam : Throwable
 /// specific noise module, and its GetValue() method was called, that
 /// method will raise a debug assertion instead of this exception.  This
 /// is done for performance reasons.
-class ExceptionNoModule : Throwable
+class ExceptionNoMod : Throwable
 {
 };
 

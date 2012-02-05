@@ -19,9 +19,9 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.terrace;
+module noise.mod.terrace;
 
-import noise.module.modulebase;
+import noise.mod.modulebase;
 import noise.misc;
 import noise.interp;
 
@@ -64,7 +64,7 @@ import noise.interp;
 /// your stereotypical desert canyon.
 ///
 /// This noise module requires one source module.
-class Terrace : Module
+class Terrace : Mod
 {
 
     public:
@@ -72,10 +72,10 @@ class Terrace : Module
 	/// Constructor.
 	this()
 	{
-		  super(this.GetSourceModuleCount ());
-	  m_controlPointCount = 0;
-	  m_invertTerraces = false;
-	  m_pControlPoints = NULL;
+		super(this.GetSourceModCount ());
+	  	m_controlPointCount = 0;
+	  	m_invertTerraces = false;
+	  	m_pControlPoints = NULL;
 	}
 
 	/// Destructor.
@@ -143,7 +143,7 @@ class Terrace : Module
 	return m_controlPointCount;
 	}
 
-	override int GetSourceModuleCount () const
+	override int GetSourceModCount () const
 	{
 	return 1;
 	}
@@ -172,17 +172,17 @@ class Terrace : Module
 
 	override double GetValue (double x, double y, double z) const
 	{
-	  assert (m_pSourceModule[0] != NULL);
+	  assert (m_pSourceMod[0] != NULL);
 	  assert (m_controlPointCount >= 2);
 
 	  // Get the output value from the source module.
-	  double sourceModuleValue = m_pSourceModule[0].GetValue (x, y, z);
+	  double sourceModValue = m_pSourceMod[0].GetValue (x, y, z);
 
 	  // Find the first element in the control point array that has a value
 	  // larger than the output value from the source module.
 	  int indexPos;
 	  for (indexPos = 0; indexPos < m_controlPointCount; indexPos++) {
-	    if (sourceModuleValue < m_pControlPoints[indexPos]) {
+	    if (sourceModValue < m_pControlPoints[indexPos]) {
 	      break;
 	    }
 	  }
@@ -203,7 +203,7 @@ class Terrace : Module
 	  // Compute the alpha value used for linear interpolation.
 	  double value0 = m_pControlPoints[index0];
 	  double value1 = m_pControlPoints[index1];
-	  double alpha = (sourceModuleValue - value0) / (value1 - value0);
+	  double alpha = (sourceModValue - value0) / (value1 - value0);
 	  if (m_invertTerraces) {
 	    alpha = 1.0 - alpha;
 	    SwapValues (value0, value1);
@@ -242,9 +242,9 @@ class Terrace : Module
 
 	  ClearAllControlPoints ();
 
-	  double terraceStep = 2.0 / ((double)controlPointCount - 1.0);
+	  double terraceStep = 2.0 / (cast(double)controlPointCount - 1.0);
 	  double curValue = -1.0;
-	  for (int i = 0; i < (int)controlPointCount; i++) {
+	  for (int i = 0; i < cast(int)controlPointCount; i++) {
 	    AddControlPoint (curValue);
 	    curValue += terraceStep;
 	  }

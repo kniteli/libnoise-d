@@ -19,10 +19,10 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.blend;
+module noise.mod.blend;
 
 import noise.interp;
-import noise.module.modulebase;
+import noise.mod.modulebase;
 
 /// @addtogroup libnoise
 /// @{
@@ -30,7 +30,7 @@ import noise.module.modulebase;
 /// @addtogroup modules
 /// @{
 
-/// @defgroup selectormodules Selector Modules
+/// @defgroup selectormodules Selector Mods
 /// @addtogroup selectormodules
 /// @{
 
@@ -52,22 +52,22 @@ import noise.module.modulebase;
 ///   Positive values weigh the blend towards the output value from the
 ///   source module with an index value of 1.
 ///
-/// An application can pass the control module to the SetControlModule()
-/// method instead of the SetSourceModule() method.  This may make the
+/// An application can pass the control module to the SetControlMod()
+/// method instead of the SetSourceMod() method.  This may make the
 /// application code easier to read.
 ///
 /// This noise module uses linear interpolation to perform the blending
 /// operation.
 ///
 /// This noise module requires three source modules.
-class Blend : Module
+class Blend : Mod
 {
 
   public:
 
     /// Constructor.
     this () {
-        super(this.GetSourceModuleCount());
+        super(this.GetSourceModCount());
     }
 
     /// Returns the control module.
@@ -75,9 +75,9 @@ class Blend : Module
     /// @returns A reference to the control module.
     ///
     /// @pre A control module has been added to this noise module via a
-    /// call to SetSourceModule() or SetControlModule().
+    /// call to SetSourceMod() or SetControlMod().
     ///
-    /// @throw noise::ExceptionNoModule See the preconditions for more
+    /// @throw noise::ExceptionNoMod See the preconditions for more
     /// information.
     ///
     /// The control module determines the weight of the blending
@@ -85,35 +85,35 @@ class Blend : Module
     /// value from the source module with an index value of 0.  Positive
     /// values weigh the blend towards the output value from the source
     /// module with an index value of 1.
-    const Module& GetControlModule () const
+    const ref Mod GetControlMod () const
     {
-      if (m_pSourceModule == NULL || m_pSourceModule[2] == NULL) {
-        throw ExceptionNoModule ();
+      if (m_pSourceMod == NULL || m_pSourceMod[2] == NULL) {
+        throw ExceptionNoMod ();
       }
-      return *(m_pSourceModule[2]);
+      return *(m_pSourceMod[2]);
     }
 
-    override int GetSourceModuleCount () const
+    override int GetSourceModCount () const
     {
       return 3;
     }
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceModule[0] != NULL);
-      assert (m_pSourceModule[1] != NULL);
-      assert (m_pSourceModule[2] != NULL);
+      assert (m_pSourceMod[0] != NULL);
+      assert (m_pSourceMod[1] != NULL);
+      assert (m_pSourceMod[2] != NULL);
 
-      double v0 = m_pSourceModule[0]->GetValue (x, y, z);
-      double v1 = m_pSourceModule[1]->GetValue (x, y, z);
-      double alpha = (m_pSourceModule[2]->GetValue (x, y, z) + 1.0) / 2.0;
+      double v0 = m_pSourceMod[0].GetValue (x, y, z);
+      double v1 = m_pSourceMod[1].GetValue (x, y, z);
+      double alpha = (m_pSourceMod[2].GetValue (x, y, z) + 1.0) / 2.0;
       return LinearInterp (v0, v1, alpha);
     }   
 
 
     /// Sets the control module.
     ///
-    /// @param controlModule The control module.
+    /// @param controlMod The control module.
     ///
     /// The control module determines the weight of the blending
     /// operation.  Negative values weigh the blend towards the output
@@ -123,16 +123,16 @@ class Blend : Module
     ///
     /// This method assigns the control module an index value of 2.
     /// Passing the control module to this method produces the same
-    /// results as passing the control module to the SetSourceModule()
+    /// results as passing the control module to the SetSourceMod()
     /// method while assigning that noise module an index value of 2.
     ///
     /// This control module must exist throughout the lifetime of this
     /// noise module unless another control module replaces that control
     /// module.
-    void SetControlModule (const Module& controlModule)
+    void SetControlMod (const ref Mod controlMod)
     {
-      assert (m_pSourceModule != NULL);
-      m_pSourceModule[2] = &controlModule;
+      assert (m_pSourceMod != NULL);
+      m_pSourceMod[2] = &controlMod;
     }
 
 }

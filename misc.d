@@ -53,7 +53,7 @@ int ClampValue (int value, int lowerBound, int upperBound)
 /// @param b The second value.
 ///
 /// @returns The maximum of the two values.
-T GetMax(T) (const T& a, const T& b)
+T GetMax(T) (const ref T a, const ref T b)
 {
   return (a > b? a: b);
 }
@@ -64,7 +64,7 @@ T GetMax(T) (const T& a, const T& b)
 /// @param b The second value.
 ///
 /// @returns The minimum of the two values.
-T GetMin(T) (const T& a, const T& b)
+T GetMin(T) (const ref T a, const ref T b)
 {
   return (a < b? a: b);
 }
@@ -75,7 +75,7 @@ T GetMin(T) (const T& a, const T& b)
 /// @param b A variable containing the second value.
 ///
 /// @post The values within the the two variables are swapped.
-void SwapValues(T) (T& a, T& b)
+void SwapValues(T) (ref T a, ref T b)
 {
   T c = a;
   a = b;

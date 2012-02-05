@@ -41,7 +41,7 @@ module noise.noise;
 /// It is not known if libnoise will compile on 64-bit platforms, although
 /// there is a good change that it will.
 ///
-/// @section noise Noise Modules
+/// @section noise Noise Mods
 ///
 /// In libnoise, coherent-noise generators are encapsulated in classes called
 /// <i>noise modules</i>. There are many different types of noise modules.
@@ -56,7 +56,7 @@ module noise.noise;
 /// If the application passes the same input value to a noise module, the
 /// noise module returns the same output value.
 ///
-/// All noise modules are derived from the noise::module::Module abstract
+/// All noise modules are derived from the noise::module::Mod abstract
 /// base class.
 ///
 /// @section contact Contact
@@ -65,7 +65,7 @@ module noise.noise;
 /// address is jlbezigvins@gmzigail.com (For great email, take off every
 /// <a href=http://www.planettribes.com/allyourbase/story.shtml>zig</a>.)
 public {
-	import noise.module.module;
+	import noise.mod.mod;
 	import noise.model.model;
 	import noise.misc;
 }

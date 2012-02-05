@@ -19,9 +19,9 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.rigidmulti;
+module noise.mod.rigidmulti;
 
-import noise.module.modulebase;
+import noise.mod.modulebase;
 
 /// @addtogroup libnoise
 /// @{
@@ -117,7 +117,7 @@ const int RIDGED_MAX_OCTAVE = 30;
 /// <a href=http://www.pandromeda.com/>MojoWorld</a>.  He is also one of
 /// the authors in <i>Texturing and Modeling: A Procedural Approach</i>
 /// (Morgan Kaufmann, 2002. ISBN 1-55860-848-6.)
-class RidgedMulti : Module
+class RidgedMulti : Mod
 {
 
   public:
@@ -137,7 +137,7 @@ class RidgedMulti : Module
     /// module::DEFAULT_RIDGED_SEED.
     this()
     {
-        super(this.GetSourceModuleCount ());
+        super(this.GetSourceModCount ());
         m_frequency = DEFAULT_RIDGED_FREQUENCY;
         m_lacunarity = DEFAULT_RIDGED_LACUNARITY;
         m_noiseQuality = DEFAULT_RIDGED_QUALITY;
@@ -198,7 +198,7 @@ class RidgedMulti : Module
       return m_seed;
     }
 
-    override int GetSourceModuleCount () const
+    override int GetSourceModCount () const
     {
       return 0;
     }

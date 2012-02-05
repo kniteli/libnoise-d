@@ -19,9 +19,9 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.checkerboard;
+module noise.mod.checkerboard;
 
-import noise.module.modulebase;
+import noise.mod.modulebase;
 
 /// @addtogroup libnoise
 /// @{
@@ -43,7 +43,7 @@ import noise.module.modulebase;
 /// for debugging purposes.
 ///
 /// This noise module does not require any source modules.
-class Checkerboard: public Module
+class Checkerboard: public Mod
 {
 
   public:
@@ -51,19 +51,19 @@ class Checkerboard: public Module
     /// Constructor.
     this ()
     {
-        super(this.GetSourceModuleCount());
+        super(this.GetSourceModCount());
     }
 
-    override int GetSourceModuleCount () const
+    override int GetSourceModCount () const
     {
         return 0;
     }
 
     override double GetValue (double x, double y, double z) const
     {
-      int ix = (int)(floor (MakeInt32Range (x)));
-      int iy = (int)(floor (MakeInt32Range (y)));
-      int iz = (int)(floor (MakeInt32Range (z)));
+      int ix = cast(int)(floor (MakeInt32Range (x)));
+      int iy = cast(int)(floor (MakeInt32Range (y)));
+      int iz = cast(int)(floor (MakeInt32Range (z)));
       return (ix & 1 ^ iy & 1 ^ iz & 1)? -1.0: 1.0;
     }
 

@@ -19,9 +19,9 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.select;
+module noise.mod.select;
 
-import noise.module.modulebase;
+import noise.mod.modulebase;
 import noise.interp;
 
 /// @addtogroup libnoise
@@ -64,8 +64,8 @@ const double DEFAULT_SELECT_UPPER_BOUND = 1.0;
 /// To specify the bounds of the selection range, call the SetBounds()
 /// method.
 ///
-/// An application can pass the control module to the SetControlModule()
-/// method instead of the SetSourceModule() method.  This may make the
+/// An application can pass the control module to the SetControlMod()
+/// method instead of the SetSourceMod() method.  This may make the
 /// application code easier to read.
 ///
 /// By default, there is an abrupt transition between the output values
@@ -74,7 +74,7 @@ const double DEFAULT_SELECT_UPPER_BOUND = 1.0;
 /// method.  Higher values result in a smoother transition.
 ///
 /// This noise module requires three source modules.
-class Select : Module
+class Select : Mod
 {
 
   public:
@@ -91,7 +91,7 @@ class Select : Module
     /// module::DEFAULT_SELECT_UPPER_BOUND.
     this()
     {
-        super(this.GetSourceModuleCount ());
+        super(this.GetSourceModCount ());
         m_edgeFalloff = DEFAULT_SELECT_EDGE_FALLOFF;
         m_lowerBound = DEFAULT_SELECT_LOWER_BOUND;
         m_upperBound = DEFAULT_SELECT_UPPER_BOUND;
@@ -102,9 +102,9 @@ class Select : Module
     /// @returns A reference to the control module.
     ///
     /// @pre A control module has been added to this noise module via a
-    /// call to SetSourceModule() or SetControlModule().
+    /// call to SetSourceMod() or SetControlMod().
     ///
-    /// @throw ExceptionNoModule See the preconditions for more
+    /// @throw ExceptionNoMod See the preconditions for more
     /// information.
     ///
     /// The control module determines the output value to select.  If the
@@ -113,12 +113,12 @@ class Select : Module
     /// the value from the source module with an index value of 1.
     /// Otherwise, this method outputs the value from the source module
     /// with an index value of 0.
-    const Module& GetControlModule () const
+    const ref Mod GetControlMod () const
     {
-      if (m_pSourceModule == NULL || m_pSourceModule[2] == NULL) {
-        throw ExceptionNoModule ();
+      if (m_pSourceMod == NULL || m_pSourceMod[2] == NULL) {
+        throw ExceptionNoMod ();
       }
-      return *(m_pSourceModule[2]);
+      return *(m_pSourceMod[2]);
     }
 
     /// Returns the falloff value at the edge transition.
@@ -149,7 +149,7 @@ class Select : Module
       return m_lowerBound;
     }
 
-    override int GetSourceModuleCount () const
+    override int GetSourceModCount () const
     {
       return 3;
     }
@@ -169,17 +169,17 @@ class Select : Module
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceModule[0] != NULL);
-      assert (m_pSourceModule[1] != NULL);
-      assert (m_pSourceModule[2] != NULL);
+      assert (m_pSourceMod[0] != NULL);
+      assert (m_pSourceMod[1] != NULL);
+      assert (m_pSourceMod[2] != NULL);
 
-      double controlValue = m_pSourceModule[2].GetValue (x, y, z);
+      double controlValue = m_pSourceMod[2].GetValue (x, y, z);
       double alpha;
       if (m_edgeFalloff > 0.0) {
         if (controlValue < (m_lowerBound - m_edgeFalloff)) {
           // The output value from the control module is below the selector
           // threshold; return the output value from the first source module.
-          return m_pSourceModule[0].GetValue (x, y, z);
+          return m_pSourceMod[0].GetValue (x, y, z);
 
         } else if (controlValue < (m_lowerBound + m_edgeFalloff)) {
           // The output value from the control module is near the lower end of the
@@ -189,14 +189,14 @@ class Select : Module
           double upperCurve = (m_lowerBound + m_edgeFalloff);
           alpha = SCurve3 (
             (controlValue - lowerCurve) / (upperCurve - lowerCurve));
-          return LinearInterp (m_pSourceModule[0].GetValue (x, y, z),
-            m_pSourceModule[1].GetValue (x, y, z),
+          return LinearInterp (m_pSourceMod[0].GetValue (x, y, z),
+            m_pSourceMod[1].GetValue (x, y, z),
             alpha);
 
         } else if (controlValue < (m_upperBound - m_edgeFalloff)) {
           // The output value from the control module is within the selector
           // threshold; return the output value from the second source module.
-          return m_pSourceModule[1].GetValue (x, y, z);
+          return m_pSourceMod[1].GetValue (x, y, z);
 
         } else if (controlValue < (m_upperBound + m_edgeFalloff)) {
           // The output value from the control module is near the upper end of the
@@ -206,20 +206,20 @@ class Select : Module
           double upperCurve = (m_upperBound + m_edgeFalloff);
           alpha = SCurve3 (
             (controlValue - lowerCurve) / (upperCurve - lowerCurve));
-          return LinearInterp (m_pSourceModule[1].GetValue (x, y, z),
-            m_pSourceModule[0].GetValue (x, y, z),
+          return LinearInterp (m_pSourceMod[1].GetValue (x, y, z),
+            m_pSourceMod[0].GetValue (x, y, z),
             alpha);
 
         } else {
           // Output value from the control module is above the selector threshold;
           // return the output value from the first source module.
-          return m_pSourceModule[0].GetValue (x, y, z);
+          return m_pSourceMod[0].GetValue (x, y, z);
         }
       } else {
         if (controlValue < m_lowerBound || controlValue > m_upperBound) {
-          return m_pSourceModule[0].GetValue (x, y, z);
+          return m_pSourceMod[0].GetValue (x, y, z);
         } else {
-          return m_pSourceModule[1].GetValue (x, y, z);
+          return m_pSourceMod[1].GetValue (x, y, z);
         }
       }
     }
@@ -252,7 +252,7 @@ class Select : Module
 
     /// Sets the control module.
     ///
-    /// @param controlModule The control module.
+    /// @param controlMod The control module.
     ///
     /// The control module determines the output value to select.  If the
     /// output value from the control module is within a range of values
@@ -263,16 +263,16 @@ class Select : Module
     ///
     /// This method assigns the control module an index value of 2.
     /// Passing the control module to this method produces the same
-    /// results as passing the control module to the SetSourceModule()
+    /// results as passing the control module to the SetSourceMod()
     /// method while assigning that noise module an index value of 2.
     ///
     /// This control module must exist throughout the lifetime of this
     /// noise module unless another control module replaces that control
     /// module.
-    void SetControlModule (const Module& controlModule)
+    void SetControlMod (const ref Mod controlMod)
     {
-      assert (m_pSourceModule != NULL);
-      m_pSourceModule[2] = &controlModule;
+      assert (m_pSourceMod != NULL);
+      m_pSourceMod[2] = &controlMod;
     }
 
     /// Sets the falloff value at the edge transition.

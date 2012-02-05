@@ -19,9 +19,9 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.displace;
+module noise.mod.displace;
 
-import noise.module.modulebase;
+import noise.mod.modulebase;
 
 /// @addtogroup libnoise
 /// @{
@@ -29,7 +29,7 @@ import noise.module.modulebase;
 /// @addtogroup modules
 /// @{
 
-/// @defgroup transformermodules Transformer Modules
+/// @defgroup transformermodules Transformer Mods
 /// @addtogroup transformermodules
 /// @{
 
@@ -58,7 +58,7 @@ import noise.module.modulebase;
 /// that perform the displacement operation.
 ///
 /// This noise module requires four source modules.
-class Displace : Module
+class Displace : Mod
 {
 
   public:
@@ -66,30 +66,30 @@ class Displace : Module
   /// Constructor.
   this()
   {
-    super(this.GetSourceModuleCount());
+    super(this.GetSourceModCount());
   }
 
-  override int GetSourceModuleCount () const
+  override int GetSourceModCount () const
   {
     return 4;
   }
 
   override double GetValue (double x, double y, double z) const
   {
-    assert (m_pSourceModule[0] != NULL);
-    assert (m_pSourceModule[1] != NULL);
-    assert (m_pSourceModule[2] != NULL);
-    assert (m_pSourceModule[3] != NULL);
+    assert (m_pSourceMod[0] != NULL);
+    assert (m_pSourceMod[1] != NULL);
+    assert (m_pSourceMod[2] != NULL);
+    assert (m_pSourceMod[3] != NULL);
 
     // Get the output values from the three displacement modules.  Add each
     // value to the corresponding coordinate in the input value.
-    double xDisplace = x + (m_pSourceModule[1].GetValue (x, y, z));
-    double yDisplace = y + (m_pSourceModule[2].GetValue (x, y, z));
-    double zDisplace = z + (m_pSourceModule[3].GetValue (x, y, z));
+    double xDisplace = x + (m_pSourceMod[1].GetValue (x, y, z));
+    double yDisplace = y + (m_pSourceMod[2].GetValue (x, y, z));
+    double zDisplace = z + (m_pSourceMod[3].GetValue (x, y, z));
 
     // Retrieve the output value using the offsetted input value instead of
     // the original input value.
-    return m_pSourceModule[0].GetValue (xDisplace, yDisplace, zDisplace);
+    return m_pSourceMod[0].GetValue (xDisplace, yDisplace, zDisplace);
   }
 
   /// Returns the @a x displacement module.
@@ -97,21 +97,21 @@ class Displace : Module
   /// @returns A reference to the @a x displacement module.
   ///
   /// @pre This displacement module has been added to this noise module
-  /// via a call to SetSourceModule() or SetXDisplaceModule().
+  /// via a call to SetSourceMod() or SetXDisplaceMod().
   ///
-  /// @throw ExceptionNoModule See the preconditions for more
+  /// @throw ExceptionNoMod See the preconditions for more
   /// information.
   ///
   /// The GetValue() method displaces the input value by adding the output
   /// value from this displacement module to the @a x coordinate of the
   /// input value before returning the output value from the source
   /// module.
-  const Module& GetXDisplaceModule () const
+  const ref Mod GetXDisplaceMod () const
   {
-    if (m_pSourceModule == NULL || m_pSourceModule[1] == NULL) {
-      throw ExceptionNoModule ();
+    if (m_pSourceMod == NULL || m_pSourceMod[1] == NULL) {
+      throw ExceptionNoMod ();
     }
-    return *(m_pSourceModule[1]);
+    return *(m_pSourceMod[1]);
   }
 
   /// Returns the @a y displacement module.
@@ -119,21 +119,21 @@ class Displace : Module
   /// @returns A reference to the @a y displacement module.
   ///
   /// @pre This displacement module has been added to this noise module
-  /// via a call to SetSourceModule() or SetYDisplaceModule().
+  /// via a call to SetSourceMod() or SetYDisplaceMod().
   ///
-  /// @throw ExceptionNoModule See the preconditions for more
+  /// @throw ExceptionNoMod See the preconditions for more
   /// information.
   ///
   /// The GetValue() method displaces the input value by adding the output
   /// value from this displacement module to the @a y coordinate of the
   /// input value before returning the output value from the source
   /// module.
-  const Module& GetYDisplaceModule () const
+  const ref Mod GetYDisplaceMod () const
   {
-    if (m_pSourceModule == NULL || m_pSourceModule[2] == NULL) {
-      throw ExceptionNoModule ();
+    if (m_pSourceMod == NULL || m_pSourceMod[2] == NULL) {
+      throw ExceptionNoMod ();
     }
-    return *(m_pSourceModule[2]);
+    return *(m_pSourceMod[2]);
   }
 
   /// Returns the @a z displacement module.
@@ -141,30 +141,30 @@ class Displace : Module
   /// @returns A reference to the @a z displacement module.
   ///
   /// @pre This displacement module has been added to this noise module
-  /// via a call to SetSourceModule() or SetZDisplaceModule().
+  /// via a call to SetSourceMod() or SetZDisplaceMod().
   ///
-  /// @throw ExceptionNoModule See the preconditions for more
+  /// @throw ExceptionNoMod See the preconditions for more
   /// information.
   ///
   /// The GetValue() method displaces the input value by adding the output
   /// value from this displacement module to the @a z coordinate of the
   /// input value before returning the output value from the source
   /// module.
-  const Module& GetZDisplaceModule () const
+  const ref Mod GetZDisplaceMod () const
   {
-    if (m_pSourceModule == NULL || m_pSourceModule[3] == NULL) {
-      throw ExceptionNoModule ();
+    if (m_pSourceMod == NULL || m_pSourceMod[3] == NULL) {
+      throw ExceptionNoMod ();
     }
-    return *(m_pSourceModule[3]);
+    return *(m_pSourceMod[3]);
   }
 
   /// Sets the @a x, @a y, and @a z displacement modules.
   ///
-  /// @param xDisplaceModule Displacement module that displaces the @a x
+  /// @param xDisplaceMod Displacement module that displaces the @a x
   /// coordinate of the input value.
-  /// @param yDisplaceModule Displacement module that displaces the @a y
+  /// @param yDisplaceMod Displacement module that displaces the @a y
   /// coordinate of the input value.
-  /// @param zDisplaceModule Displacement module that displaces the @a z
+  /// @param zDisplaceMod Displacement module that displaces the @a z
   /// coordinate of the input value.
   ///
   /// The GetValue() method displaces the input value by adding the output
@@ -178,17 +178,17 @@ class Displace : Module
   ///
   /// These displacement modules must exist throughout the lifetime of
   /// this noise module unless another displacement module replaces it.
-  void SetDisplaceModules (const Module& xDisplaceModule,
-    const Module& yDisplaceModule, const Module& zDisplaceModule)
+  void SetDisplaceMods (const ref Mod xDisplaceMod,
+    const ref Mod yDisplaceMod, const ref Mod zDisplaceMod)
   {
-    SetXDisplaceModule (xDisplaceModule);
-    SetYDisplaceModule (yDisplaceModule);
-    SetZDisplaceModule (zDisplaceModule);
+    SetXDisplaceMod (xDisplaceMod);
+    SetYDisplaceMod (yDisplaceMod);
+    SetZDisplaceMod (zDisplaceMod);
   }
 
   /// Sets the @a x displacement module.
   ///
-  /// @param xDisplaceModule Displacement module that displaces the @a x
+  /// @param xDisplaceMod Displacement module that displaces the @a x
   /// coordinate.
   ///
   /// The GetValue() method displaces the input value by adding the output
@@ -199,19 +199,19 @@ class Displace : Module
   /// This method assigns an index value of 1 to the @a x displacement
   /// module.  Passing this displacement module to this method produces
   /// the same results as passing this displacement module to the
-  /// SetSourceModule() method while assigning it an index value of 1.
+  /// SetSourceMod() method while assigning it an index value of 1.
   ///
   /// This displacement module must exist throughout the lifetime of this
   /// noise module unless another displacement module replaces it.
-  void SetXDisplaceModule (const Module& xDisplaceModule)
+  void SetXDisplaceMod (const ref Mod xDisplaceMod)
   {
-    assert (m_pSourceModule != NULL);
-    m_pSourceModule[1] = &xDisplaceModule;
+    assert (m_pSourceMod != NULL);
+    m_pSourceMod[1] = &xDisplaceMod;
   }
 
   /// Sets the @a y displacement module.
   ///
-  /// @param yDisplaceModule Displacement module that displaces the @a y
+  /// @param yDisplaceMod Displacement module that displaces the @a y
   /// coordinate.
   ///
   /// The GetValue() method displaces the input value by adding the output
@@ -222,19 +222,19 @@ class Displace : Module
   /// This method assigns an index value of 2 to the @a y displacement
   /// module.  Passing this displacement module to this method produces
   /// the same results as passing this displacement module to the
-  /// SetSourceModule() method while assigning it an index value of 2.
+  /// SetSourceMod() method while assigning it an index value of 2.
   ///
   /// This displacement module must exist throughout the lifetime of this
   /// noise module unless another displacement module replaces it.
-  void SetYDisplaceModule (const Module& yDisplaceModule)
+  void SetYDisplaceMod (const ref Mod yDisplaceMod)
   {
-    assert (m_pSourceModule != NULL);
-    m_pSourceModule[2] = &yDisplaceModule;
+    assert (m_pSourceMod != NULL);
+    m_pSourceMod[2] = &yDisplaceMod;
   }
 
   /// Sets the @a z displacement module.
   ///
-  /// @param zDisplaceModule Displacement module that displaces the @a z
+  /// @param zDisplaceMod Displacement module that displaces the @a z
   /// coordinate.
   ///
   /// The GetValue() method displaces the input value by adding the output
@@ -245,14 +245,14 @@ class Displace : Module
   /// This method assigns an index value of 3 to the @a z displacement
   /// module.  Passing this displacement module to this method produces
   /// the same results as passing this displacement module to the
-  /// SetSourceModule() method while assigning it an index value of 3.
+  /// SetSourceMod() method while assigning it an index value of 3.
   ///
   /// This displacement module must exist throughout the lifetime of this
   /// noise module unless another displacement module replaces it.
-  void SetZDisplaceModule (const Module& zDisplaceModule)
+  void SetZDisplaceMod (const ref Mod zDisplaceMod)
   {
-    assert (m_pSourceModule != NULL);
-    m_pSourceModule[3] = &zDisplaceModule;
+    assert (m_pSourceMod != NULL);
+    m_pSourceMod[3] = &zDisplaceMod;
   }
 
 };

@@ -19,9 +19,9 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.cylinders;
+module noise.mod.cylinders;
 
-import noise.module.modulebase;
+import noise.mod.modulebase;
 import noise.misc;
 
 /// @addtogroup libnoise
@@ -62,7 +62,7 @@ const double DEFAULT_CYLINDERS_FREQUENCY = 1.0;
 /// turbulence, is useful for generating wood-like textures.
 ///
 /// This noise module does not require any source modules.
-class Cylinders : Module
+class Cylinders : Mod
 {
 
   public:
@@ -73,7 +73,7 @@ class Cylinders : Module
     /// module::DEFAULT_CYLINDERS_FREQUENCY.
     this()
     {
-        super(GetSourceModuleCount ());
+        super(GetSourceModCount ());
         m_frequency = DEFAULT_CYLINDERS_FREQUENCY;
     }
 
@@ -88,7 +88,7 @@ class Cylinders : Module
       return m_frequency;
     }
 
-    override int GetSourceModuleCount () const
+    override int GetSourceModCount () const
     {
       return 0;
     }

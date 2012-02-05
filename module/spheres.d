@@ -19,9 +19,9 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.spheres;
+module noise.mod.spheres;
 
-import noise.module.modulebase;
+import noise.mod.modulebase;
 import noise.misc;
 
 /// @addtogroup libnoise
@@ -60,7 +60,7 @@ const double DEFAULT_SPHERES_FREQUENCY = 1.0;
 /// turbulence, is useful for generating agate-like textures.
 ///
 /// This noise module does not require any source modules.    
-class Spheres : Module
+class Spheres : Mod
 {
 
   public:
@@ -71,7 +71,7 @@ class Spheres : Module
     /// module::DEFAULT_SPHERES_FREQUENCY.
     this()
     {
-        super(this.GetSourceModuleCount ());
+        super(this.GetSourceModCount ());
         m_frequency = DEFAULT_SPHERES_FREQUENCY;
     }
 
@@ -86,7 +86,7 @@ class Spheres : Module
       return m_frequency;
     }
 
-    override int GetSourceModuleCount () const
+    override int GetSourceModCount () const
     {
       return 0;
     }

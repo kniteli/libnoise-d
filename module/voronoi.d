@@ -19,9 +19,9 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.translatepoint;
+module noise.mod.translatepoint;
 
-import noise.module.modulebase;
+import noise.mod.modulebase;
 import noise.mathconsts;
 
 /// @addtogroup libnoise
@@ -80,7 +80,7 @@ const int DEFAULT_VORONOI_SEED = 0;
 /// formations or crystal-like textures
 ///
 /// This noise module requires no source modules.
-class Voronoi : Module
+class Voronoi : Mod
 {
 
   public:
@@ -97,7 +97,7 @@ class Voronoi : Module
     /// module::DEFAULT_VORONOI_SEED.
     this()
     {
-        super(this.GetSourceModuleCount ());
+        super(this.GetSourceModCount ());
         m_displacement = DEFAULT_VORONOI_DISPLACEMENT;
         m_enableDistance = false;
         m_frequency = DEFAULT_VORONOI_FREQUENCY;
@@ -145,7 +145,7 @@ class Voronoi : Module
       return m_frequency;
     }
 
-    override int GetSourceModuleCount () const
+    override int GetSourceModCount () const
     {
       return 0;
     }
@@ -186,9 +186,9 @@ class Voronoi : Module
       y *= m_frequency;
       z *= m_frequency;
 
-      int xInt = (x > 0.0? (int)x: (int)x - 1);
-      int yInt = (y > 0.0? (int)y: (int)y - 1);
-      int zInt = (z > 0.0? (int)z: (int)z - 1);
+      int xInt = (x > 0.0? cast(int)x: cast(int)x - 1);
+      int yInt = (y > 0.0? cast(int)y: cast(int)y - 1);
+      int zInt = (z > 0.0? cast(int)z: cast(int)z - 1);
 
       double minDist = 2147483647.0;
       double xCandidate = 0;
@@ -237,10 +237,10 @@ class Voronoi : Module
       }
 
       // Return the calculated distance with the displacement value applied.
-      return value + (m_displacement * (double)ValueNoise3D (
-        (int)(floor (xCandidate)),
-        (int)(floor (yCandidate)),
-        (int)(floor (zCandidate))));
+      return value + (m_displacement * cast(double)ValueNoise3D (
+        cast(int)(floor (xCandidate)),
+        cast(int)(floor (yCandidate)),
+        cast(int)(floor (zCandidate))));
     }
 
     /// Sets the displacement value of the Voronoi cells.

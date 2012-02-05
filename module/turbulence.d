@@ -19,10 +19,10 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.translatepoint;
+module noise.mod.translatepoint;
 
-import noise.module.modulebase;
-import noise.module.perlin;
+import noise.mod.modulebase;
+import noise.mod.perlin;
 
 /// @addtogroup libnoise
 /// @{
@@ -103,7 +103,7 @@ const int DEFAULT_TURBULENCE_SEED = DEFAULT_PERLIN_SEED;
 /// and one for the @a z coordinate.
 ///
 /// This noise module requires one source module.
-class Turbulence : Module
+class Turbulence : Mod
 {
 
   public:
@@ -123,7 +123,7 @@ class Turbulence : Module
     /// module::DEFAULT_TURBULENCE_SEED.
     this()
     {
-        super(this.GetSourceModuleCount());
+        super(this.GetSourceModCount());
         m_power = DEFAULT_TURBULENCE_POWER;
         SetSeed (DEFAULT_TURBULENCE_SEED);
         SetFrequency (DEFAULT_TURBULENCE_FREQUENCY);
@@ -140,7 +140,7 @@ class Turbulence : Module
     {
       // Since each module::Perlin noise module has the same frequency, it
       // does not matter which module we use to retrieve the frequency.
-      return m_xDistortModule.GetFrequency ();
+      return m_xDistortMod.GetFrequency ();
     }
 
     /// Returns the power of the turbulence.
@@ -164,7 +164,7 @@ class Turbulence : Module
     /// displacement amount, which produces more "kinky" changes.
     int GetRoughnessCount () const
     {
-      return m_xDistortModule.GetOctaveCount ();
+      return m_xDistortMod.GetOctaveCount ();
     }
 
     /// Returns the seed value of the internal Perlin-noise modules that
@@ -177,17 +177,17 @@ class Turbulence : Module
     /// and one for the @a z coordinate.  
     int GetSeed () const
     {
-      return m_xDistortModule.GetSeed ();
+      return m_xDistortMod.GetSeed ();
     }
 
-    override int GetSourceModuleCount () const
+    override int GetSourceModCount () const
     {
       return 1;
     }
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceModule[0] != NULL);
+      assert (m_pSourceMod[0] != NULL);
 
       // Get the values from the three module::Perlin noise modules and
       // add each value to each coordinate of the input value.  There are also
@@ -208,16 +208,16 @@ class Turbulence : Module
       x2 = x + (53820.0 / 65536.0);
       y2 = y + (11213.0 / 65536.0);
       z2 = z + (44845.0 / 65536.0);
-      double xDistort = x + (m_xDistortModule.GetValue (x0, y0, z0)
+      double xDistort = x + (m_xDistortMod.GetValue (x0, y0, z0)
         * m_power);
-      double yDistort = y + (m_yDistortModule.GetValue (x1, y1, z1)
+      double yDistort = y + (m_yDistortMod.GetValue (x1, y1, z1)
         * m_power);
-      double zDistort = z + (m_zDistortModule.GetValue (x2, y2, z2)
+      double zDistort = z + (m_zDistortMod.GetValue (x2, y2, z2)
         * m_power);
 
       // Retrieve the output value at the offsetted input value instead of the
       // original input value.
-      return m_pSourceModule[0].GetValue (xDistort, yDistort, zDistort);
+      return m_pSourceMod[0].GetValue (xDistort, yDistort, zDistort);
     }
 
     /// Sets the frequency of the turbulence.
@@ -229,9 +229,9 @@ class Turbulence : Module
     void SetFrequency (double frequency)
     {
       // Set the frequency of each Perlin-noise module.
-      m_xDistortModule.SetFrequency (frequency);
-      m_yDistortModule.SetFrequency (frequency);
-      m_zDistortModule.SetFrequency (frequency);
+      m_xDistortMod.SetFrequency (frequency);
+      m_yDistortMod.SetFrequency (frequency);
+      m_zDistortMod.SetFrequency (frequency);
     }
 
     /// Sets the power of the turbulence.
@@ -262,9 +262,9 @@ class Turbulence : Module
     void SetRoughness (int roughness)
     {
       // Set the octave count for each Perlin-noise module.
-      m_xDistortModule.SetOctaveCount (roughness);
-      m_yDistortModule.SetOctaveCount (roughness);
-      m_zDistortModule.SetOctaveCount (roughness);
+      m_xDistortMod.SetOctaveCount (roughness);
+      m_yDistortMod.SetOctaveCount (roughness);
+      m_zDistortMod.SetOctaveCount (roughness);
     }
 
     /// Sets the seed value of the internal noise modules that are used to
@@ -284,9 +284,9 @@ class Turbulence : Module
       // Set the seed of each module::Perlin noise modules.  To prevent any
       // sort of weird artifacting, use a slightly different seed for each noise
       // module.
-      m_xDistortModule.SetSeed (seed    );
-      m_yDistortModule.SetSeed (seed + 1);
-      m_zDistortModule.SetSeed (seed + 2);
+      m_xDistortMod.SetSeed (seed    );
+      m_yDistortMod.SetSeed (seed + 1);
+      m_zDistortMod.SetSeed (seed + 2);
     }
 
   protected:
@@ -295,13 +295,13 @@ class Turbulence : Module
     double m_power;
 
     /// Noise module that displaces the @a x coordinate.
-    Perlin m_xDistortModule;
+    Perlin m_xDistortMod;
 
     /// Noise module that displaces the @a y coordinate.
-    Perlin m_yDistortModule;
+    Perlin m_yDistortMod;
 
     /// Noise module that displaces the @a z coordinate.
-    Perlin m_zDistortModule;
+    Perlin m_zDistortMod;
 
 };
 

@@ -19,35 +19,35 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.module;
+module noise.mod.mod;
 
 public {
-	import noise.module.add;
-	import noise.module.abs;
-	import noise.module.billow;
-	import noise.module.blend;
-	import noise.module.cache;
-	import noise.module.checkerboard;
-	import noise.module.clamp;
-	import noise.module.const;
-	import noise.module.curve;
-	import noise.module.cylinders;
-	import noise.module.displace;
-	import noise.module.exponent;
-	import noise.module.invert;
-	import noise.module.max;
-	import noise.module.min;
-	import noise.module.multiply;
-	import noise.module.perlin;
-	import noise.module.power;
-	import noise.module.ridgedmulti;
-	import noise.module.rotatepoint;
-	import noise.module.scalebias;
-	import noise.module.scalepoint;
-	import noise.module.select;
-	import noise.module.spheres;
-	import noise.module.terrace;
-	import noise.module.translatepoint;
-	import noise.module.turbulence;
-	import noise.module.voronoi;
+	import noise.mod.add;
+	import noise.mod.abs;
+	import noise.mod.billow;
+	import noise.mod.blend;
+	import noise.mod.cache;
+	import noise.mod.checkerboard;
+	import noise.mod.clamp;
+	import noise.mod.constants;
+	import noise.mod.curve;
+	import noise.mod.cylinders;
+	import noise.mod.displace;
+	import noise.mod.exponent;
+	import noise.mod.invert;
+	import noise.mod.max;
+	import noise.mod.min;
+	import noise.mod.multiply;
+	import noise.mod.perlin;
+	import noise.mod.power;
+	import noise.mod.ridgedmulti;
+	import noise.mod.rotatepoint;
+	import noise.mod.scalebias;
+	import noise.mod.scalepoint;
+	import noise.mod.select;
+	import noise.mod.spheres;
+	import noise.mod.terrace;
+	import noise.mod.translatepoint;
+	import noise.mod.turbulence;
+	import noise.mod.voronoi;
 }

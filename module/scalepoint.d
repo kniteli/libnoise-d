@@ -19,9 +19,9 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
-module noise.module.scalepoint;
+module noise.mod.scalepoint;
 
-import noise.module.modulebase;
+import noise.mod.modulebase;
 
 /// @addtogroup libnoise
 /// @{
@@ -57,7 +57,7 @@ const double DEFAULT_SCALE_POINT_Z = 1.0;
 /// SetYScale() or SetZScale() methods, respectively.
 ///
 /// This noise module requires one source module.
-class ScalePoint : Module
+class ScalePoint : Mod
 {
 
   public:
@@ -74,22 +74,22 @@ class ScalePoint : Module
     /// to module::DEFAULT_SCALE_POINT_Z.
     this()
     {
-        super(this.GetSourceModuleCount ());
+        super(this.GetSourceModCount ());
         m_xScale = DEFAULT_SCALE_POINT_X;
         m_yScale = DEFAULT_SCALE_POINT_Y;
         m_zScale = DEFAULT_SCALE_POINT_Z; 
     }
 
-    override int GetSourceModuleCount () const
+    override int GetSourceModCount () const
     {
       return 1;
     }
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceModule[0] != NULL);
+      assert (m_pSourceMod[0] != NULL);
 
-      return m_pSourceModule[0].GetValue (x * m_xScale, y * m_yScale,
+      return m_pSourceMod[0].GetValue (x * m_xScale, y * m_yScale,
         z * m_zScale);
     }
 
