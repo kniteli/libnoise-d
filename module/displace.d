@@ -78,10 +78,10 @@ class Displace : Mod
 
   override double GetValue (double x, double y, double z) const
   {
-    assert (m_pSourceMod[0] != null);
-    assert (m_pSourceMod[1] != null);
-    assert (m_pSourceMod[2] != null);
-    assert (m_pSourceMod[3] != null);
+    assert (m_pSourceMod[0] !is null);
+    assert (m_pSourceMod[1] !is null);
+    assert (m_pSourceMod[2] !is null);
+    assert (m_pSourceMod[3] !is null);
 
     // Get the output values from the three displacement modules.  Add each
     // value to the corresponding coordinate in the input value.
@@ -207,7 +207,7 @@ class Displace : Mod
   /// noise module unless another displacement module replaces it.
   void SetXDisplaceMod (ref const(Mod) xDisplaceMod)
   {
-    assert (m_pSourceMod != null);
+    assert (m_pSourceMod !is null);
     m_pSourceMod[1] = &xDisplaceMod;
   }
 
@@ -230,7 +230,7 @@ class Displace : Mod
   /// noise module unless another displacement module replaces it.
   void SetYDisplaceMod (ref const(Mod) yDisplaceMod)
   {
-    assert (m_pSourceMod != null);
+    assert (m_pSourceMod !is null);
     m_pSourceMod[2] = &yDisplaceMod;
   }
 
@@ -253,7 +253,7 @@ class Displace : Mod
   /// noise module unless another displacement module replaces it.
   void SetZDisplaceMod (ref const(Mod) zDisplaceMod)
   {
-    assert (m_pSourceMod != null);
+    assert (m_pSourceMod !is null);
     m_pSourceMod[3] = &zDisplaceMod;
   }
 

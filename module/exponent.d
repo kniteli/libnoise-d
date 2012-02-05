@@ -83,7 +83,7 @@ class Exponent : Mod
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceMod[0] != null);
+      assert (m_pSourceMod[0] !is null);
 
       double value = m_pSourceMod[0].GetValue (x, y, z);
       return (pow (fabs ((value + 1.0) / 2.0), m_exponent) * 2.0 - 1.0);

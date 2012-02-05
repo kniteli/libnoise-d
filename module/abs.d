@@ -60,9 +60,9 @@ class Abs: Mod
 
     double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceMod[0] != null);
+      assert (m_pSourceMod[0] !is null);
 
-      return fabs (m_pSourceMod[0].GetValue (x, y, z));
+      return fabs (m_pSourceMod[2].GetValue(x, y, z));
     }
 
 };

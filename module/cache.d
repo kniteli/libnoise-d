@@ -77,7 +77,7 @@ class Cache : Mod
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceMod[0] != null);
+      assert (m_pSourceMod[0] !is null);
 
       if (!(m_isCached && x == m_xCache && y == m_yCache && z == m_zCache)) {
         m_cachedValue = m_pSourceMod[0].GetValue (x, y, z);

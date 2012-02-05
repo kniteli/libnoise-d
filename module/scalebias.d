@@ -100,10 +100,9 @@ class ScaleBias : Mod
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceMod[0] != null);
+      assert (m_pSourceMod[0] !is null);
 
-      return m_pSourceMod[0].GetValue (x * m_xScale, y * m_yScale,
-        z * m_zScale);
+      return m_pSourceMod[0].GetValue (x, y, z) * m_scale + m_bias;
     }
 
     /// Sets the bias to apply to the scaled output value from the source

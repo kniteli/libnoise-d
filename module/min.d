@@ -59,8 +59,8 @@ class Min : Mod
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceMod[0] != null);
-      assert (m_pSourceMod[1] != null);
+      assert (m_pSourceMod[0] !is null);
+      assert (m_pSourceMod[1] !is null);
 
       double v0 = m_pSourceMod[0].GetValue (x, y, z);
       double v1 = m_pSourceMod[1].GetValue (x, y, z);

@@ -75,7 +75,7 @@ class Sphere
     /// @pre A noise module was passed to the SetMod() method.
     ref const(Mod) GetMod () const
     {
-      assert (m_pMod != null);
+      assert (m_pMod !is null);
       return *m_pMod;
     }
 
@@ -100,7 +100,7 @@ class Sphere
     /// western hemisphere.
     double GetValue (double lat, double lon) const
     {
-      assert (m_pMod != null);
+      assert (m_pMod !is null);
 
       double x, y, z;
       LatLonToXYZ (lat, lon, x, y, z);

@@ -225,7 +225,7 @@ class Mod
       // Create an array of pointers to all source modules required by this
       // noise module.  Set these pointers to null.
       if (sourceModCount > 0) {
-        m_pSourceMod = new const (Mod*)[sourceModCount];
+        m_pSourceMod = new const(Mod)*[sourceModCount];
         for (int i = 0; i < sourceModCount; i++) {
           m_pSourceMod[i] = null;
         }
@@ -346,7 +346,7 @@ class Mod
 
     /// An array containing the pointers to each source module required by
     /// this noise module.
-    const(Mod)** m_pSourceMod;
+    const(Mod)*[] m_pSourceMod;
 
   private:
 
@@ -358,7 +358,7 @@ class Mod
     /// copied as well.
     final ref const(Mod) opAssign (ref const(Mod) m)
     {
-      return *this;
+      return this;
     }
 
 }

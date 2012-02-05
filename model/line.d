@@ -96,7 +96,7 @@ class Line
     /// @pre A noise module was passed to the SetMod() method.
     ref const(Mod) GetMod () const
     {
-      assert (m_pMod != null);
+      assert (m_pMod !is null);
       return *m_pMod;
     }
 
@@ -122,7 +122,7 @@ class Line
     /// extrapolated along the line that this segment is part of.
     double GetValue (double p) const
     {
-      assert (m_pMod != null);
+      assert (m_pMod !is null);
 
       double x = (m_x1 - m_x0) * p + m_x0;
       double y = (m_y1 - m_y0) * p + m_y0;

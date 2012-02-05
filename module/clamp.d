@@ -110,7 +110,7 @@ class Clamp : Mod
 
     override double GetValue(double x, double y, double z) const
     {
-      assert (m_pSourceMod[0] != null);
+      assert (m_pSourceMod[0] !is null);
 
       double value = m_pSourceMod[0].GetValue (x, y, z);
       if (value < m_lowerBound) {

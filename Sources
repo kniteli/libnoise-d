@@ -16,7 +16,6 @@ SOURCES=basictypes.d \
 	module/add.d \
 	module/billow.d \
 	module/blend.d \
-	module/cache.d \
 	module/checkerboard.d \
 	module/clamp.d \
 	module/const.d \
@@ -42,3 +41,5 @@ SOURCES=basictypes.d \
 	module/translatepoint.d \
 	module/turbulence.d \
 	module/voronoi.d
+
+REMOVED = 	module/cache.d \

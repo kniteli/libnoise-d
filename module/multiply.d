@@ -58,8 +58,8 @@ class Multiply : Mod
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceMod[0] != null);
-      assert (m_pSourceMod[1] != null);
+      assert (m_pSourceMod[0] !is null);
+      assert (m_pSourceMod[1] !is null);
 
       return m_pSourceMod[0].GetValue (x, y, z)
            * m_pSourceMod[1].GetValue (x, y, z);

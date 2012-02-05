@@ -26,7 +26,7 @@ public {
 	import noise.mod.abs;
 	import noise.mod.billow;
 	import noise.mod.blend;
-	import noise.mod.cache;
+	//import noise.mod.cache;
 	import noise.mod.checkerboard;
 	import noise.mod.clamp;
 	import noise.mod.constants;

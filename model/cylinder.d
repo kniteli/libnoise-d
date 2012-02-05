@@ -46,7 +46,7 @@ class Cylinder {
 	/// @pre A noise module was passed to the SetMod() method.
 	public ref const(Mod) GetMod () const
 	{
-		assert (m_pMod != null);
+		assert (m_pMod !is null);
 		return *m_pMod;
 	}
 
@@ -69,7 +69,7 @@ class Cylinder {
 	/// origin.
 	public double GetValue (double angle, double height) const
 	{
-	  assert (m_pMod != null);
+	  assert (m_pMod !is null);
 
 	  double x, y, z;
 	  x = cos (angle * DEG_TO_RAD);

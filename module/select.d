@@ -171,9 +171,9 @@ class Select : Mod
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceMod[0] != null);
-      assert (m_pSourceMod[1] != null);
-      assert (m_pSourceMod[2] != null);
+      assert (m_pSourceMod[0] !is null);
+      assert (m_pSourceMod[1] !is null);
+      assert (m_pSourceMod[2] !is null);
 
       double controlValue = m_pSourceMod[2].GetValue (x, y, z);
       double alpha;
@@ -273,7 +273,7 @@ class Select : Mod
     /// module.
     void SetControlMod (ref const(Mod) controlMod)
     {
-      assert (m_pSourceMod != null);
+      assert (m_pSourceMod !is null);
       m_pSourceMod[2] = &controlMod;
     }
 

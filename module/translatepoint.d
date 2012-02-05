@@ -90,7 +90,7 @@ class TranslatePoint : Mod
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceMod[0] != null);
+      assert (m_pSourceMod[0] !is null);
 
       return m_pSourceMod[0].GetValue (x + m_xTranslation, y + m_yTranslation,
         z + m_zTranslation);

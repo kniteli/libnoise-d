@@ -149,7 +149,7 @@ class Curve : Mod
 
     override double GetValue (double x, double y, double z) const
     {
-      assert (m_pSourceMod[0] != null);
+      assert (m_pSourceMod[0] !is null);
       assert (m_controlPointCount >= 4);
 
       // Get the output value from the source module.

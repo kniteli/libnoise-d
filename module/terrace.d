@@ -131,7 +131,7 @@ class Terrace : Mod
 	/// It is recommended that an application does not store this pointer
 	/// for later use since the pointer to the array may change if the
 	/// application calls another method of this object.
-	const double* GetControlPointArray () const
+	const (double)[] GetControlPointArray () const
 	{
 	return m_pControlPoints;
 	}
@@ -174,7 +174,7 @@ class Terrace : Mod
 
 	override double GetValue (double x, double y, double z) const
 	{
-	  assert (m_pSourceMod[0] != null);
+	  assert (m_pSourceMod[0] !is null);
 	  assert (m_controlPointCount >= 2);
 
 	  // Get the output value from the source module.
@@ -308,7 +308,7 @@ class Terrace : Mod
 	  // the control point array.  The position is determined by the value of
 	  // the control point; the control points must be sorted by value within
 	  // that array.
-	  double* newControlPoints = new double[m_controlPointCount + 1];
+	  double[] newControlPoints = new double[m_controlPointCount + 1];
 	  for (int i = 0; i < m_controlPointCount; i++) {
 	    if (i < insertionPos) {
 	      newControlPoints[i] = m_pControlPoints[i];
@@ -332,7 +332,7 @@ class Terrace : Mod
 	bool m_invertTerraces;
 
 	/// Array that stores the control points.
-	double* m_pControlPoints;
+	double[] m_pControlPoints;
 
 };
 
