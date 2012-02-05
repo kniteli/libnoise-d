@@ -21,10 +21,12 @@
 //
 module noise.module.modulebase;
 
-import std.math;
-import noise.basictypes;
-import noise.exception;
-import noise.noisegen;
+public {
+    import std.math;
+    import noise.basictypes;
+    import noise.exception;
+    import noise.noisegen;
+}
 
 /// @addtogroup libnoise
 /// @{
@@ -216,7 +218,7 @@ class Module
   public:
 
     /// Constructor.
-    this (int sourceModuleCount)
+    this(int sourceModuleCount)
     {
       m_pSourceModule = NULL;
 
@@ -233,7 +235,7 @@ class Module
     }
 
     /// Destructor.
-    ~this ()
+    ~this()
     {
     }
 
@@ -255,7 +257,7 @@ class Module
     /// Each noise module requires the attachment of a certain number of
     /// source modules before an application can call the GetValue()
     /// method.
-    const Module& GetSourceModule (int index) const
+    const Module& GetSourceModule(int index) const
     {
       assert (m_pSourceModule != NULL);
 
@@ -278,7 +280,7 @@ class Module
     ///
     /// @returns The number of source modules required by this noise
     /// module.
-    abstract int GetSourceModuleCount () const;
+    abstract int GetSourceModuleCount() const;
 
     /// Generates an output value given the coordinates of the specified
     /// input value.
@@ -299,7 +301,7 @@ class Module
     ///
     /// To determine the number of source modules required by this noise
     /// module, call the GetSourceModuleCount() method.
-    abstract double GetValue (double x, double y, double z) const;
+    abstract double GetValue(double x, double y, double z) const;
 
     /// Connects a source module to this noise module.
     ///
@@ -331,7 +333,7 @@ class Module
     ///
     /// A noise module does not modify a source module; it only modifies
     /// its output values.
-    void SetSourceModule (int index, const Module& sourceModule)
+    void SetSourceModule(int index, const Module& sourceModule)
     {
       assert (m_pSourceModule != NULL);
       if (index >= GetSourceModuleCount () || index < 0) {
