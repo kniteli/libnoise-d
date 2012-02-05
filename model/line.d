@@ -190,7 +190,7 @@ class Line
     bool m_attenuate;
 
     /// A pointer to the noise module used to generate the output values.
-    const module::Module* m_pModule;
+    const Module* m_pModule;
 
     /// @a x coordinate of the start of the line segment.
     double m_x0;
