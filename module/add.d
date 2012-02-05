@@ -19,59 +19,55 @@
 // The developer's email is jlbezigvins@gmzigail.com (for great email, take
 // off every 'zig'.)
 //
+module noise.module.add;
 
-#ifndef NOISE_MODULE_ADD_H
-#define NOISE_MODULE_ADD_H
+import noise.module.modulebase;
 
-#include "modulebase.h"
+/// @addtogroup libnoise
+/// @{
 
-namespace noise
+/// @addtogroup modules
+/// @{
+
+/// @defgroup combinermodules Combiner Modules
+/// @addtogroup combinermodules
+/// @{
+
+/// Noise module that outputs the sum of the two output values from two
+/// source modules.
+///
+/// @image html moduleadd.png
+///
+/// This noise module requires two source modules.
+class Add : Module
 {
 
-  namespace module
-  {
+  public:
 
-    /// @addtogroup libnoise
-    /// @{
-    
-    /// @addtogroup modules
-    /// @{
-    
-    /// @defgroup combinermodules Combiner Modules
-    /// @addtogroup combinermodules
-    /// @{
-    
-    /// Noise module that outputs the sum of the two output values from two
-    /// source modules.
-    ///
-    /// @image html moduleadd.png
-    ///
-    /// This noise module requires two source modules.
-    class Add: public Module
+    /// Constructor.
+    this ()
     {
+        super(this.GetSourceModuleCount());
+    }
 
-      public:
+    override int GetSourceModuleCount () const
+    {
+      return 2;
+    }
 
-        /// Constructor.
-        Add ();
+    override double GetValue (double x, double y, double z) const
+    {
+      assert (m_pSourceModule[0] != NULL);
+      assert (m_pSourceModule[1] != NULL);
 
-        virtual int GetSourceModuleCount () const
-        {
-          return 2;
-        }
+      return m_pSourceModule[0].GetValue (x, y, z)
+           + m_pSourceModule[1].GetValue (x, y, z);
+    }
 
-        virtual double GetValue (double x, double y, double z) const;
+};
 
-    };
+/// @}
 
-    /// @}
+/// @}
 
-    /// @}
-
-    /// @}
-
-  }
-
-}
-
-#endif
+/// @}
