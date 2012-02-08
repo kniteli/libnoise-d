@@ -21,16 +21,8 @@ class Mod
 
     abstract const double GetValue(double x, double y, double z);
 
-    void SetSourceMod(int index, ref const(Mod) sourceMod);
-    protected 
-{
-    const(Mod)*[] m_pSourceMod;
-    private final ref const(Mod) opAssign(ref const(Mod) m)
-{
-return this;
-}
+    void SetSourceMod(int index, const(Mod)* sourceMod);
+    protected const(Mod)*[] m_pSourceMod;
 
-
-}
 }
 }

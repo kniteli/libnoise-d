@@ -333,13 +333,13 @@ class Mod
     ///
     /// A noise module does not modify a source module; it only modifies
     /// its output values.
-    void SetSourceMod(int index, ref const(Mod) sourceMod)
+    void SetSourceMod(int index, const(Mod)* sourceMod)
     {
       assert (m_pSourceMod != null);
       if (index >= GetSourceModCount () || index < 0) {
         throw new ExceptionInvalidParam ();
       }
-      m_pSourceMod[index] = &sourceMod;
+      m_pSourceMod[index] = sourceMod;
     }
 
   protected:
@@ -347,20 +347,6 @@ class Mod
     /// An array containing the pointers to each source module required by
     /// this noise module.
     const(Mod)*[] m_pSourceMod;
-
-  private:
-
-    /// Assignment operator.
-    ///
-    /// This assignment operator does nothing and cannot be overridden.
-    /// This restriction is necessary because if this object was copied,
-    /// all source modules assigned to this noise module would need to be
-    /// copied as well.
-    final ref const(Mod) opAssign (ref const(Mod) m)
-    {
-      return this;
-    }
-
 }
 
 /// @}
