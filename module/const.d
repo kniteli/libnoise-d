@@ -23,6 +23,7 @@ module noise.mod.constants;
 
 private {
     import noise.mod.modulebase;
+    debug import std.stdio;
 }
 
 /// @addtogroup libnoise
@@ -48,7 +49,7 @@ const double DEFAULT_CONST_VALUE = 0.0;
 /// source module for other noise modules.
 ///
 /// This noise module does not require any source modules.
-class Const : Mod
+class Constant : Mod
 {
 
   public:
@@ -61,6 +62,11 @@ class Const : Mod
     {
         super(this.GetSourceModCount());
         m_constValue = DEFAULT_CONST_VALUE;
+    }
+
+    this(double constant) {
+        super(this.GetSourceModCount());
+        m_constValue = constant;
     }
 
     /// Returns the constant output value for this noise module.

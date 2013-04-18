@@ -34,6 +34,7 @@ public {
 	import noise.mod.cylinders;
 	import noise.mod.displace;
 	import noise.mod.exponent;
+	import noise.mod.gradient;
 	import noise.mod.invert;
 	import noise.mod.max;
 	import noise.mod.min;
@@ -45,6 +46,7 @@ public {
 	import noise.mod.scalebias;
 	import noise.mod.scalepoint;
 	import noise.mod.select;
+	import noise.mod.simplex;
 	import noise.mod.spheres;
 	import noise.mod.terrace;
 	import noise.mod.translatepoint;

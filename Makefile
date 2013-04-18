@@ -5,4 +5,4 @@ OUTPUT = -of./lib/libnoise-d.lib
 FLAGS = -O -release -inline
 
 all:
-	dmd $(SOURCES) $(OUTPUT) $(FLAGS) -lib
+	dmd $(SOURCES) $(OUTPUT) $(FLAGS) $(INTERFACES) -lib

@@ -131,10 +131,10 @@ class Blend : Mod
     /// This control module must exist throughout the lifetime of this
     /// noise module unless another control module replaces that control
     /// module.
-    void SetControlMod (ref const(Mod) controlMod)
+    void SetControlMod (const(Mod)* controlMod)
     {
       assert (m_pSourceMod !is null);
-      m_pSourceMod[2] = &controlMod;
+      m_pSourceMod[2] = controlMod;
     }
 
 }

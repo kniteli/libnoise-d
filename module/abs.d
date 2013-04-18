@@ -53,12 +53,12 @@ class Abs: Mod
         super(this.GetSourceModCount());
     }
 
-    int GetSourceModCount () const
+    override int GetSourceModCount () const
     {
       return 1;
     }
 
-    double GetValue (double x, double y, double z) const
+    override double GetValue (double x, double y, double z) const
     {
       assert (m_pSourceMod[0] !is null);
 

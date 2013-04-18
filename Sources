@@ -23,6 +23,7 @@ SOURCES=basictypes.d \
 	module/cylinders.d \
 	module/displace.d \
 	module/exponent.d \
+	module/gradient.d \
 	module/invert.d \
 	module/max.d \
 	module/min.d \
@@ -36,6 +37,7 @@ SOURCES=basictypes.d \
 	module/scalebias.d \
 	module/scalepoint.d \
 	module/select.d \
+	module/simplex.d \
 	module/spheres.d \
 	module/terrace.d \
 	module/translatepoint.d \

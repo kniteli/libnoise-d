@@ -220,12 +220,11 @@ class Mod
     /// Constructor.
     this(int sourceModCount)
     {
-      m_pSourceMod = null;
+        m_pSourceMod.length = sourceModCount;
 
       // Create an array of pointers to all source modules required by this
       // noise module.  Set these pointers to null.
       if (sourceModCount > 0) {
-        m_pSourceMod = new const(Mod)*[sourceModCount];
         for (int i = 0; i < sourceModCount; i++) {
           m_pSourceMod[i] = null;
         }
@@ -336,7 +335,7 @@ class Mod
     void SetSourceMod(int index, const(Mod)* sourceMod)
     {
       assert (m_pSourceMod != null);
-      if (index >= GetSourceModCount () || index < 0) {
+      if (index >= GetSourceModCount() || index < 0) {
         throw new ExceptionInvalidParam ();
       }
       m_pSourceMod[index] = sourceMod;

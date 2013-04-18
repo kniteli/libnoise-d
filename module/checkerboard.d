@@ -45,7 +45,7 @@ private {
 /// for debugging purposes.
 ///
 /// This noise module does not require any source modules.
-class Checkerboard: public Mod
+class Checkerboard: Mod
 {
 
   public:
