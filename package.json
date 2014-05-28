@@ -1,0 +1,10 @@
+{
+    "name": "libnoise-d",
+    "description": "A port of the C++ libnoise library to D",
+    "authors": ["kniteli"],
+    "license": "unknown",
+    "targetType": "library",
+    "targetName": "noise-d",
+    "targetPath": "lib",
+    "excludedSourceFiles": ["src/noise/mod/cache.d"]
+}
